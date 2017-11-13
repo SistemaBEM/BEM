@@ -34,19 +34,19 @@
   <body>
     <%
         String login =(String)session.getAttribute("l");
-        String validator = (String)session.getAttribute("validator");
+        //String validator = (String)session.getAttribute("validator");
         //redirect user to login page if not logged in
         if(login==null){
             response.sendRedirect("index.jsp");
         }
-        if(validator==null){
+        /*if(validator==null){
             response.sendRedirect("index.jsp");
-        }
+        }*/
     %>
         <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-          <a class="navbar-brand bem_logo" href="#">bem</a>
+          <a class="navbar-brand bem_logo" href="../index.jsp">bem</a>
       </div>
     </nav>
 
