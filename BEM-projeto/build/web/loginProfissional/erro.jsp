@@ -33,15 +33,11 @@
 
   <body>
     <%
-        String login =(String)session.getAttribute("l");
-        //String validator = (String)session.getAttribute("validator");
-        //redirect user to login page if not logged in
+        String login =(String)session.getAttribute("login");
         if(login==null){
             response.sendRedirect("index.jsp");
         }
-        /*if(validator==null){
-            response.sendRedirect("index.jsp");
-        }*/
+
     %>
         <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">

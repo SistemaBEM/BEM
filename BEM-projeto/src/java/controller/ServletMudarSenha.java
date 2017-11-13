@@ -94,7 +94,7 @@ public class ServletMudarSenha extends HttpServlet {
             try {
                 if (PsicologoFacede.mudarSenha(ms)) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("validator", crp);
+                    session.setAttribute("login", crp);
                     response.sendRedirect("loginProfissional/index.jsp");
                 } else {
                     request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
@@ -108,7 +108,7 @@ public class ServletMudarSenha extends HttpServlet {
             try {
                 if (UsuarioFacede.mudarSenha(ms)) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("validator", email);
+                    session.setAttribute("login", email);
                     response.sendRedirect("loginUsuario/index.jsp");
                 } else {
                     request.getRequestDispatcher("loginUsuario/erro.jsp").forward(request, response);
