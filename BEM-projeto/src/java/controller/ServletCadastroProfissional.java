@@ -131,7 +131,8 @@ public class ServletCadastroProfissional extends HttpServlet {
         psic.setSenha(senha);
                 
             try {
-                if ( TipoAtendimentoFacede.inserirTA(ta) && PsicologoFacede.inserirPS(psic)) {
+                if ( TipoAtendimentoFacede.inserirTA(ta)&&PsicologoFacede.inserirPS(psic)
+                        &&PsicologoFacede.solicitacaoCadastral(psic)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("crp", crp);
                     response.sendRedirect("cadastroProfissional/sucesso.jsp");

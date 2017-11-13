@@ -31,4 +31,7 @@ public class PsicologoFacede {
     public static boolean uniqueLogin(String obj) throws SQLException {
         return PsicologoDAO.uniqueLogin(obj);
     }
+    public static boolean solicitacaoCadastral(Psicologo psic) throws SQLException {
+        return PsicologoDAO.solicitacaoCadastral(psic);
+    }
 }

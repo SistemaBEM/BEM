@@ -54,6 +54,24 @@ public class PsicologoDAO {
         return r;
     }
     
+    public static boolean solicitacaoCadastral(Psicologo psic) throws SQLException {
+        boolean r = false;
+        getConnection();
+        PreparedStatement ps = null;
+        try {
+             ps = connection.prepareStatement ("INSERT INTO validacao_cadastro(crp, nome) VALUES (?,?);" );
+            ps.setString(1, psic.getCrp());
+            ps.setString(2, psic.getNome());
+            ps.execute();
+            r = true;
+        } catch (SQLException e) {
+            System.out.println("error: " + e);
+        } finally {
+            closeConnection();
+        }
+        return r;
+    }
+    
     public static boolean verificacaoLogin(Psicologo psic) throws SQLException {       
           getConnection();
             
