@@ -55,23 +55,50 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
-
+    <div  class="container">
+        <br/><br/>
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Fica <a class="navbar-brand bem_logo" href="index.jsp">bem</a> com a gente </h1>
-
+        <h3 align="center" class="display-8"> Oii, como você se cadastrou no 
+            <a class="navbar-brand bem_logo" href="#">bem</a>?</h3>
+            <br/>
+            <small>Psiu, se não possui, faça seu cadastro agora! 
+              <a class="" href="cadastrar.jsp">Clique aqui</a>  </small>
+            
     </div>
     <!-- /.container -->
-
-      <div class="container">
-          <form method="post">
-            <div class="form-group col-md-4">
-              Login: <input type="text" class="form-control" name="nome"><br>
-              Senha: <input type="password" class="form-control" name="senha"><br>
-              <button class="btn btn-primary">Enviar</button>
+    <br><br>
+        <div class="container">
+            <div id="figure">
+                <a class="menuLogin" href="loginProfissional/index.jsp">
+                    <figure class="fig-pic">
+                        <img src="imgs/imgsSingIn/medicos-bem.png" title="Profissional" alt="" class="img-rounded">
+                        <figcaption>Profissional</figcaption>
+                    </figure>
+                </a>
+                <a class="menuLogin" href="loginUsuario/#">
+                    <figure class="fig-pic">
+                        <img src="imgs/imgsSingIn/pacientes-bem.png" title="Usuário" alt="" class="img-rounded">
+                        <figcaption>Usuário</figcaption>
+                    </figure>
+                </a>
+                <a class="menuLogin" href="loginAdmin/#">
+                    <figure class="fig-pic">
+                        <img src="imgs/imgsSingIn/administradores.png" title="Administrador" alt="" class="img-rounded">
+                        <figcaption>Administrador(a)</figcaption>
+                    </figure>
+                </a>
             </div>
-          </form>
-      </div><br><br>
+        </div>
+    <br><br>
+        <div class="m-0 text-left">
+            <small>
+                &nbsp;&nbsp;Icons made by <a href="https://www.flaticon.com/authors/popcorns-arts" target="_blank" 
+                title="Icon Pond">Icon Pond</a> from <a href="https://www.flaticon.com/" title="Flaticon" 
+                target="_blank">
+                www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 
+                title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+            </small>
+        </div>
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">

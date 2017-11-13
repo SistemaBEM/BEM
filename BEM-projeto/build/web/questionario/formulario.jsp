@@ -18,12 +18,18 @@
     <title>Projeto BEM</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
-    <link href="css/auxiliar.css" rel="stylesheet">
-
+    <link href="../css/modern-business.css" rel="stylesheet">
+    <link href="../css/auxiliar.css" rel="stylesheet">
+    <link href="../css/bootstrap-select.css" rel="stylesheet">
+    <link href="../css/selected-css.css" rel="stylesheet">
+    
+    <!--SCRIPT-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    
   </head>
 
   <body>
@@ -31,23 +37,23 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand bem_logo" href="index.jsp">bem</a>
+        <a class="navbar-brand bem_logo" href="../index.jsp">bem</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.jsp">Sobre Nós</a>
+              <a class="nav-link link-nav" href="../about.jsp">Sobre Nós</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact2.jsp">Contate um Profissional</a>
+              <a class="nav-link" href="../contact2.jsp">Contate um Profissional</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.jsp">Fale Conosco</a>
+              <a class="nav-link" href="../contact.jsp">Fale Conosco</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="singin.jsp">Login</a>
+              <a class="nav-link" href="../singin.jsp">Login</a>
             </li>
           </ul>
         </div>
@@ -66,351 +72,387 @@
     <!-- /.container -->
 
     <div class="container">
-      <form  id="contactForm" novalidate method="post" action="servletQuestionario">
+      <form  id="contactForm" data-toggle="validator" role="form" method="post" action="../servletQuestionario">
         <!-- pergunta 1 -->
-        <div class="control-group form-group">
+        <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Nas situações totalmente não good vibes, você achou difícil se acalmar?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-1" class="form-control" name="pergunta-1">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-1" class="form-control"  name="pergunta-1" data-error="Campo obrigatório" required>
+                            <option selected disabled  hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Foi complicado</option>
                             <option value="1">Mais ou menos</option>
                             <option value="1">Foi muito difícil</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 2 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu sua boca seca?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-2" class="form-control" name="pergunta-2">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-2" class="form-control" name="pergunta-2"data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 3 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você já não conseguiu vivenciar nenhum sentimento positivo?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-3" class="form-control" name="pergunta-3">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-3" class="form-control" name="pergunta-3" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 4 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você já teve dificuldade em respirar em alguns momentos?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-4" class="form-control" name="pergunta-4">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-4" class="form-control" name="pergunta-4" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 5 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você achou difícil tomar a iniciativa de fazer alguma coisa?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-5" class="form-control" name="pergunta-5">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-5" class="form-control" name="pergunta-5" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 6 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você já reagiu de forma exagerada às situações?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-6" class="form-control" name="pergunta-6">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-6" class="form-control" name="pergunta-6" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 7 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você já sentiu tremores em alguma parte do seu corpo?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-7" class="form-control" name="pergunta-7">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-7" class="form-control" name="pergunta-7" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 8 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu que estava sempre nervoso(a)?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-8" class="form-control" name="pergunta-8">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-8" class="form-control" name="pergunta-8" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 9 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         você se preocupou com situações que você poderia entrar em pânico e parecesse ridículo?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-9" class="form-control" name="pergunta-9">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-9" class="form-control" name="pergunta-9" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 10 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você já sentiu que não tinha nada a desejar?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-10" class="form-control" name="pergunta-10">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-10" class="form-control" name="pergunta-10" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 11 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já se sentiu agitado(a)?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-11" class="form-control" name="pergunta-11">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-11" class="form-control" name="pergunta-11" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 12 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já achou muito difícil relaxar?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-12" class="form-control" name="pergunta-12">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-12" class="form-control" name="pergunta-12" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 13 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já se sentiu sem ânimo e com uma tristeza muito intensa?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-13" class="form-control" name="pergunta-13">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-13" class="form-control" name="pergunta-13" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 14 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Você foi intolerante com as coisas que te impediam de continuar o que estava fazendo?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-14" class="form-control" name="pergunta-14">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-14" class="form-control" name="pergunta-14" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
          <!-- pergunta 15 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu que ia entrar em pânico?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-15" class="form-control" name="pergunta-15">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-15" class="form-control" name="pergunta-15" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 16 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já teve momentos que você não conseguia se animar com nada?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-16" class="form-control" name="pergunta-16">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-16" class="form-control" name="pergunta-16" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 17 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu que você não tinha importância?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-17" class="form-control" name="pergunta-17">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-17" class="form-control" name="pergunta-17" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 18 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu/notou que estava muito emotivo ou sensível?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-18" class="form-control" name="pergunta-18">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-18" class="form-control" name="pergunta-18" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 19 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
@@ -418,67 +460,63 @@
                         sem ter feito nenhum esforço?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-19" class="form-control" name="pergunta-19">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-19" class="form-control" name="pergunta-19" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 20 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu medo de algo sem motivo aparente?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-20" class="form-control" name="pergunta-20">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-20" class="form-control" name="pergunta-20" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- pergunta 21 -->
-          <div class="control-group form-group">
+          <div class="control-group form-group has-feedback">
             <div class="controls">
                 <div class="row">
                     <div class="col-6 col-md-6">
                         Já sentiu que a vida não tinha sentido?
                     </div>
                     <div class="col-6 col-md-4">
-                        <select id="pergunta-21" class="form-control" name="pergunta-21">
-                            <option selected hidden>Escolher resposta</option>
+                        <select id="pergunta-21" class="form-control" name="pergunta-21" data-error="Campo obrigatório" required>
+                            <option selected disabled hidden>Escolher resposta</option>
                             <option value="0">Não</option>
                             <option value="1">Raramente</option>
                             <option value="2">Algumas vezes</option>
                             <option value="3">Muitas vezes</option>
                         </select>
+                        <span class="" aria-hidden="true"></span>
+                        <div class="help-block with-errors">Campo obrigatório</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="control-group form-group">
-            <div class="controls">
-                <div class="row"></div>
-            </div>
-        </div>
-        <div class="control-group form-group">
-            <div class="controls">
-                <div class="row"></div>
-            </div>
-        </div>
-        
+        <br/><br/>
         <!-- input -->
           <div class="control-group form-group">
             <div class="controls">
@@ -489,21 +527,7 @@
                 </div>
             </div>
         </div>
-        
-        <div class="control-group form-group">
-            <div class="controls">
-                <div class="row">
-                </div>
-            </div>
-        </div>
-        <div class="control-group form-group">
-            <div class="controls">
-                <div class="row">
-                </div>
-            </div>
-        </div>
-        
-        
+        <br/><br/>        
       </form>
     </div>
 
@@ -514,17 +538,35 @@
       </div>
       <!-- /.container -->
     </footer>
-
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/popper/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          var mySelect = $('#first-disabled2');
 
+          $('#special').on('click', function () {
+            mySelect.find('option:selected').prop('disabled', true);
+            mySelect.selectpicker('refresh');
+          });
+
+          $('#special2').on('click', function () {
+            mySelect.find('option:disabled').prop('disabled', false);
+            mySelect.selectpicker('refresh');
+          });
+
+          $('#basic2').selectpicker({
+            liveSearch: true,
+            maxOptions: 1
+          });
+        });
+    </script>
     <!-- Contact form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
+    <script src="../js/contact_me.js"></script>
+    <script src="../js/bootstrap-select.js"></script>
+    <script src="../js/validator.min.js"></script>
   </body>
 
 </html>

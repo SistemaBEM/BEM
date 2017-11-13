@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.QuestionarioDASS21;
+import fachadas.QuestionarioFacede;
+import javax.servlet.http.HttpSession;
 import services.ConectarBanco;
 
 /**
@@ -124,16 +126,19 @@ public class ServletFormulario extends HttpServlet {
         q.setPergunta19(r19);
         q.setPergunta20(r20);
         q.setPergunta21(r21);
-        
-
-        QuestionarioDAO dao = new QuestionarioDAO();
+       
         try {
-            dao.addResp(q);
-            response.sendRedirect("redirecionamento-game.jsp"); 
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletFormulario.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendRedirect("404.jsp"); 
-        }
+                if (QuestionarioFacede.adicionarResposta(q)) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("r1", r1);
+                    response.sendRedirect("questionario/redirecionamento-game.jsp");
+                } else {
+                    request.getRequestDispatcher("questionario/erro.jsp").forward(request, response);
+                     System.out.println(r1);
+                }   
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletFormulario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
     }
 

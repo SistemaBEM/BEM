@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -37,7 +38,7 @@ public class ConectarBanco {
             
             String url="jdbc:mysql://localhost:3306/bem-pds";
             String user="root";
-            String password="*";
+            String password="jonathan1998";
 
             try {
                 connection = (Connection) DriverManager.getConnection(url, user, password);
@@ -48,7 +49,6 @@ public class ConectarBanco {
          return connection;
     }
     
-
     public static Connection closeConnection() throws SQLException {
         if(connection != null){
             connection.close();

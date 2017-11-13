@@ -53,20 +53,41 @@
         </div>
       </div>
     </nav>
-
+    <br><br><br><br>
     <!-- Page Content -->
     <div class="container">
-
-        <img class="menu_jogo" id="Image-Maps-Com-image-maps-2017-10-26-200120" src="http://www.image-maps.com/m/private/0/23md4p41lo5jr0l0lshj1qego2_ex.png" border="0" width="862" height="360" orgWidth="862" orgHeight="360" usemap="#image-maps-2017-10-26-200120" alt="" />
-        <map name="image-maps-2017-10-26-200120" id="ImageMapsCom-image-maps-2017-10-26-200120">
-        <area id="form"  alt="" title="" href="formulario.jsp" shape="rect" coords="66,65,350,306" style="outline:none;" target="_self" />
-        <area id="game" alt="" title="" href="jogo.jsp" shape="rect" coords="503,57,788,298" style="outline:none;" target="_self"     />
-        <area shape="rect" coords="860,358,862,360" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_91637" />
-        </map>
-
-
-      
-    </div> 
+            <div id="figure">
+                <a class="menuLogin" href="questionario/formulario.jsp">
+                    <figure class="fig-pic">
+                        <img src="imgs/imgsOption/form.png" title="Formulario" alt="" class="img-rounded">
+                        <figcaption>Formulário</figcaption>
+                    </figure>
+                </a>
+                <figure class="fig-pic"></figure>
+                <a class="menuLogin" href="questionario/#">
+                    <figure class="fig-pic">
+                        <img src="imgs/imgsOption/game.png" title="game" alt="" class="img-rounded">
+                        <figcaption>Jogo Interativo</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </div>
+    <br><br><br><br>
+        <div class="m-0 text-left">
+            <small>
+                &nbsp;&nbsp;Icons made by <a href="https://www.flaticon.com/authors/prosymbols" title="Prosymbols" target="_blank">
+                Prosymbols</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a>
+                is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 
+                title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+            </small>
+            <br/>
+            <small>
+                &nbsp;&nbsp;Icons made by <a href="http://www.freepik.com" title="Freepik" target="_blank">Freepik</a>
+                from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a>
+                is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" 
+                target="_blank">CC 3.0 BY</a>
+            </small>
+        </div>
     <!-- /.container -->
     <!-- Footer -->
     <footer class="py-5 bg-dark">
