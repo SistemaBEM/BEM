@@ -60,7 +60,7 @@
       <div class="jumbotron">
         <h1 class="display-1">Oii</h1>
         <br/><br/><br/>
-        <h1 class="display-1">Page profissional</h1>
+        <h1 class="display-1">Page Usuário</h1>
         <br/><br/>
       </div>
       <!-- /.jumbotron -->

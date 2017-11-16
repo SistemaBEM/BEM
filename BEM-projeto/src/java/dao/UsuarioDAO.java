@@ -5,8 +5,12 @@
  */
 package dao;
 
+import entidades.Cryptography;
+import static entidades.Cryptography.Cryptography;
 import entidades.MudarSenha;
 import entidades.Usuario;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,17 +26,19 @@ import static services.ConectarBanco.getConnection;
 public class UsuarioDAO {
     
         private static Connection connection = ConectarBanco.getConnection();
-
-    public static boolean inserirUser(Usuario u) throws SQLException {
+        Cryptography c = new Cryptography();
+        
+    public static boolean inserirUser(Usuario u) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         boolean r = false;
         getConnection();
+        Cryptography c = new Cryptography();
         PreparedStatement ps;
         try {
              ps = connection.prepareStatement ("INSERT INTO cad_usuario(nome, email, login, senha) VALUES (?,?,?,?);" );
             ps.setString(1, u.getNome_completo());
             ps.setString(2, u.getEmail());
             ps.setString(3, u.getUsuario());
-            ps.setString(4, u.getSenha());
+            ps.setString(4, Cryptography(u.getSenha()));
             ps.execute(); 
             r = true;
         } catch (SQLException e) {
@@ -43,7 +49,7 @@ public class UsuarioDAO {
         return r;
     }
     
-    public static boolean verificacaoLogin(Usuario u) throws SQLException {       
+    public static boolean verificacaoLogin(Usuario u) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {       
           getConnection();
           boolean r = false;
           PreparedStatement ps;
@@ -52,7 +58,7 @@ public class UsuarioDAO {
             {
                 ps = connection.prepareStatement("select * from cad_usuario where login = ? and senha = ?;");
                 ps.setString(1, u.getUsuario());
-                ps.setString(2, u.getSenha());
+                ps.setString(2, Cryptography(u.getSenha()));
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     r = true; 
@@ -65,14 +71,14 @@ public class UsuarioDAO {
         return r;
     }
     
-    public static boolean mudarSenha(MudarSenha ms) throws SQLException {            
+    public static boolean mudarSenha(MudarSenha ms) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {            
         boolean r = false;
         getConnection();
         PreparedStatement ps;
         try
         {
             ps = connection.prepareStatement(
-            "update cad_usuario set senha = '" + ms.getSenha() + "' where crp = '" + ms.getValidador() + "' ;" );
+            "update cad_usuario set senha = '" + Cryptography(ms.getSenha()) + "' where crp = '" + ms.getValidador() + "' ;" );
             ps.execute();
             r = true; 
         } catch (SQLException e) {

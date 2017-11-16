@@ -5,8 +5,11 @@
  */
 package dao;
 
+import static entidades.Cryptography.Cryptography;
 import entidades.MudarSenha;
 import entidades.Psicologo;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +26,7 @@ public class PsicologoDAO {
     
     private static Connection connection = ConectarBanco.getConnection();
     
-    public static boolean inserirPS(Psicologo psic) throws SQLException {
+    public static boolean inserirPS(Psicologo psic) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         boolean r = false;
         getConnection();
         TipoAtendimentoDAO dao = new TipoAtendimentoDAO();
@@ -42,7 +45,7 @@ public class PsicologoDAO {
             ps.setString(8, psic.getContatoOp());
             ps.setString(9, psic.getEMail());
             ps.setString(10, psic.getLogin());
-            ps.setString(11, psic.getSenha());
+            ps.setString(11, Cryptography(psic.getSenha()));
             ps.setInt(12, tpID);
             ps.execute(); // filho
             r = true;
@@ -72,7 +75,7 @@ public class PsicologoDAO {
         return r;
     }
     
-    public static boolean verificacaoLogin(Psicologo psic) throws SQLException {       
+    public static boolean verificacaoLogin(Psicologo psic) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {       
           getConnection();
             
           boolean r = false;
@@ -82,7 +85,7 @@ public class PsicologoDAO {
             {
                 ps = connection.prepareStatement("select * from cad_psicologo where login = ? and senha = ?;");
                 ps.setString(1, psic.getLogin());
-                ps.setString(2, psic.getSenha());
+                ps.setString(2, Cryptography(psic.getSenha()));
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     r = true; 
@@ -95,14 +98,14 @@ public class PsicologoDAO {
         return r;
     }
     
-    public static boolean mudarSenha(MudarSenha ms) throws SQLException {            
+    public static boolean mudarSenha(MudarSenha ms) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {            
         boolean r = false;
         getConnection();
         PreparedStatement ps;
         try
         {
             ps = connection.prepareStatement(
-            "update cad_psicologo set senha = '" + ms.getSenha() + "' where crp = '" + ms.getValidador() + "' ;" );
+            "update cad_psicologo set senha = '" + Cryptography(ms.getSenha()) + "' where crp = '" + ms.getValidador() + "' ;" );
             ps.execute();
             r = true; 
         } catch (SQLException e) {

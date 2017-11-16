@@ -85,14 +85,14 @@ public class ServletCadastroUsuario extends HttpServlet {
         String email = request.getParameter("EMail");
         String login = request.getParameter("login");
         String senha = request.getParameter("conf_senha");
-        
+                
         Usuario u = new Usuario();
         u.setNome_completo(nome);
         u.setEmail(email);
         u.setUsuario(login);
         u.setSenha(senha);
-        
-        try {
+                
+            try {
                 if ( UsuarioFacede.inserirUser(u)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
