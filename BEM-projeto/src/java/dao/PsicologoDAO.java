@@ -155,21 +155,20 @@ public class PsicologoDAO {
     
     // Astrogilda Caroline
     
-    public static Psicologo Login(Psicologo prof) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException
+    public static Psicologo Login(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException
     {
         getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        Psicologo psic = null;
             try
             {
                 ps = connection.prepareStatement("select * from cad_psicologo where login = ? and senha = ?;");
-                ps.setString(1, prof.getLogin());
-                ps.setString(2, Cryptography(prof.getSenha()));
+                ps.setString(1, psic.getLogin());
+                ps.setString(2, Cryptography(psic.getSenha()));
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     psic = new Psicologo();
-                    psic.setLogin(prof.getLogin());
+                    psic.setLogin(psic.getLogin());
                     psic.setNome(rs.getString("nome"));
                     psic.setCrp(rs.getString("crp"));
                     psic.setRua(rs.getString("rua"));
@@ -187,29 +186,24 @@ public class PsicologoDAO {
         return psic;
     }
      
-    public static Psicologo Update(Psicologo prof) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException
+    public static Psicologo Update(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException
     {
         getConnection();
         PreparedStatement ps;
         int rs;
-        Psicologo psic = null;
             try
             {
                 ps = connection.prepareStatement("update cad_psicologo set nome = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, "
                     + "telefoneComercial = ? where login = ?;");
-                ps.setString(1, prof.getNome());
-                ps.setString(2, prof.getRua());
-                ps.setString(3, prof.getNumero());
-                ps.setString(4, prof.getBairro());
-                ps.setString(5, prof.getCidade());
-                ps.setString(6, prof.getContato());
-                ps.setString(7, prof.getLogin());
+                ps.setString(1, psic.getNome());
+                ps.setString(2, psic.getRua());
+                ps.setString(3, psic.getNumero());
+                ps.setString(4, psic.getBairro());
+                ps.setString(5, psic.getCidade());
+                ps.setString(6, psic.getContato());
+                ps.setString(7, psic.getLogin());
                 rs = ps.executeUpdate();
-                
-                if(rs > 0){
-                    psic = prof;
-                }
-                
+                 
             } catch (SQLException e) {
                 System.out.println("error: " + e);
             } finally {

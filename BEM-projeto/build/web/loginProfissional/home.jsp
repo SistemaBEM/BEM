@@ -66,14 +66,14 @@
                 </div>
                 <div class="panel panel-default col-xs-6 col-md-6">
                     <div class="panel-body" style="background-color: #F0F8FF;">
-                        <h5 class="fonte">Nome: ${psic.nome}</h5>
-                        <h5 class="fonte">CRP: ${psic.crp}</h5>
-                        <h5 class="fonte">Rua: ${psic.rua}</h5>
-                        <h5 class="fonte">Numero: ${psic.numero}</h5>
-                        <h5 class="fonte">Bairro: ${psic.bairro}</h5>
-                        <h5 class="fonte">Cidade: ${psic.cidade}</h5>
-                        <h5 class="fonte">Contato: ${psic.contato}</h5>
-                        <h5 class="fonte">E-mail: ${psic.EMail}</h5>
+                        <h5 class="fonte">Nome: ${prof.nome}</h5>
+                        <h5 class="fonte">CRP: ${prof.crp}</h5>
+                        <h5 class="fonte">Rua: ${prof.rua}</h5>
+                        <h5 class="fonte">Numero: ${prof.numero}</h5>
+                        <h5 class="fonte">Bairro: ${prof.bairro}</h5>
+                        <h5 class="fonte">Cidade: ${prof.cidade}</h5>
+                        <h5 class="fonte">Contato: ${prof.contato}</h5>
+                        <h5 class="fonte">E-mail: ${prof.EMail}</h5>
                     </div>
                 </div>
             </div><br>

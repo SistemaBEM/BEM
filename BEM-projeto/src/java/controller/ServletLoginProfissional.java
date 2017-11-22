@@ -89,13 +89,17 @@ public class ServletLoginProfissional extends HttpServlet {
         psic.setLogin(login);
         psic.setSenha(senha);
         
+        Psicologo prof = new Psicologo();
+        prof.setLogin(login);
+        prof.setSenha(senha);
+        
             try {
-                psic = PsicologoFacede.Login(psic); // Astrogilda Caroline
-                if (PsicologoFacede.verificacaoLogin(psic) && (psic != null)) {
+                prof = PsicologoFacede.Login(psic); // Astrogilda Caroline
+                if (PsicologoFacede.verificacaoLogin(psic) && (prof != null)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
                     
-                    session.setAttribute("psic", psic); // Astrogilda Caroline
+                    session.setAttribute("prof", prof); // Astrogilda Caroline
                     
                     response.sendRedirect("loginProfissional/home.jsp");
                 } else {
