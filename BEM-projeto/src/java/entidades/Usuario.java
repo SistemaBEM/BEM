@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author marya
+ * @author Leonardo Marques
  */
 public class Usuario {
     private String nome_completo, email, usuario, senha;

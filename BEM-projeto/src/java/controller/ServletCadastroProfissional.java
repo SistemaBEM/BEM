@@ -13,6 +13,8 @@ import fachadas.PsicologoFacede;
 import fachadas.TipoAtendimentoFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.logging.Level;
@@ -27,7 +29,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 @WebServlet(name = "ServletCadastroProfissional", urlPatterns = {"/ServletCadastroProfissional"})
 public class ServletCadastroProfissional extends HttpServlet {
@@ -83,7 +85,7 @@ public class ServletCadastroProfissional extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
         
         String nome = request.getParameter("nome_completo");
@@ -141,7 +143,9 @@ public class ServletCadastroProfissional extends HttpServlet {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

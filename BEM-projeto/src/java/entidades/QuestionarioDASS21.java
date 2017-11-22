@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class QuestionarioDASS21 {
    /* ArrayList<Object> respostas = new ArrayList<>();

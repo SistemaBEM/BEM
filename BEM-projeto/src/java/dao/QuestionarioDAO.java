@@ -17,7 +17,7 @@ import static services.ConectarBanco.getConnection;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class QuestionarioDAO {
     

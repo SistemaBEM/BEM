@@ -1,7 +1,7 @@
 <%-- 
     Document   : logout
     Created on : 09/11/2017, 15:01:44
-    Author     : marya
+    Author     : Maryanne Alice
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

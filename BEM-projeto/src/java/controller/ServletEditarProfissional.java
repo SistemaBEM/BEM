@@ -5,11 +5,8 @@
  */
 package controller;
 
-import dao.PsicologoDAO;
-import dao.UsuarioDAO;
-import entidades.MudarSenha;
+import entidades.Psicologo;
 import fachadas.PsicologoFacede;
-import fachadas.UsuarioFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -26,10 +23,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Maryanne Alice
+ * @author Astrogilda Caroline
  */
-@WebServlet(name = "ServletMudarSenha", urlPatterns = {"/ServletMudarSenha"})
-public class ServletMudarSenha extends HttpServlet {
+@WebServlet(name = "ServletEditarProfissional", urlPatterns = {"/ServletEditarProfissional"})
+public class ServletEditarProfissional extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,10 +45,10 @@ public class ServletMudarSenha extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletMudarSenha</title>");            
+            out.println("<title>Servlet ServletEditarProfissional</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletMudarSenha at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletEditarProfissional at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -82,46 +79,40 @@ public class ServletMudarSenha extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, UnsupportedEncodingException {
-        //processRequest(request, response);
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
         
-        String crp = request.getParameter("crp");
-        String email = request.getParameter("EMail");
-        String senha = request.getParameter("conf_senha");
+        String login = (String) request.getSession().getAttribute("login");
+        String nome = request.getParameter("nome_completo");
+        String rua = request.getParameter("rua");
+        String numero = request.getParameter("numero");
+        String bairro = request.getParameter("bairro");
+        String cidade = request.getParameter("cidade");
+        String contato = request.getParameter("contato");
         
-        MudarSenha ms = new MudarSenha();
-        ms.setSenha(senha);
-        if (crp!=null) {
-            ms.setValidador(crp);
-            try {
-                if (PsicologoFacede.mudarSenha(ms)) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("login", crp);
-                    response.sendRedirect("loginProfissional/index.jsp");
-                } else {
-                    request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(ServletMudarSenha.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(ServletMudarSenha.class.getName()).log(Level.SEVERE, null, ex);
+        Psicologo psic = (Psicologo) session.getAttribute("psic");
+        psic.setLogin(login);
+        psic.setNome(nome);
+        psic.setRua(rua);
+        psic.setNumero(numero);
+        psic.setBairro(bairro);
+        psic.setCidade(cidade);
+        psic.setContato(contato);
+        
+        try {
+            if (PsicologoFacede.Update(psic)) {
+                session.setAttribute("psic", psic);
+                response.sendRedirect("loginProfissional/home.jsp");
+                //request.getRequestDispatcher("loginProfissional/home.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
             }
-        } 
-        if (email!=null) {
-            ms.setValidador(email);
-            try {
-                if (UsuarioFacede.mudarSenha(ms)) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("login", email);
-                    response.sendRedirect("loginUsuario/index.jsp");
-                } else {
-                    request.getRequestDispatcher("loginUsuario/erro.jsp").forward(request, response);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(ServletMudarSenha.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(ServletMudarSenha.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (SQLException ex) {   
+            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,7 +1,7 @@
 <%-- 
     Document   : 404
     Created on : 26/10/2017, 20:51:19
-    Author     : marya
+    Author     : Astrogilda Caroline
 --%>
 
 
@@ -54,18 +54,49 @@
     </nav>
         
     <!-- Page Content -->
-    <div class="container">
+    
 
       <!-- Page Heading/Breadcrumbs -->
       <div class="jumbotron">
-        <h1 class="display-1">Oii</h1>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img style="border-radius: 175px;" src="http://ketchcetera.com/images/content/heads/female.jpg" alt="...">
+                    </a>
+                </div>
+                <div class="panel panel-default col-xs-6 col-md-6">
+                    <div class="panel-body" style="background-color: #F0F8FF;">
+                        <h5 class="fonte">Nome: ${psic.nome}</h5>
+                        <h5 class="fonte">CRP: ${psic.crp}</h5>
+                        <h5 class="fonte">Rua: ${psic.rua}</h5>
+                        <h5 class="fonte">Numero: ${psic.numero}</h5>
+                        <h5 class="fonte">Bairro: ${psic.bairro}</h5>
+                        <h5 class="fonte">Cidade: ${psic.cidade}</h5>
+                        <h5 class="fonte">Contato: ${psic.contato}</h5>
+                        <h5 class="fonte">E-mail: ${psic.EMail}</h5>
+                    </div>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <form method="post" action="update.jsp">
+                        <input type="submit" class="form-control btn btn-primary btn-cadPsic" value="Alterar Imagem">
+                    </form>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <form method="post" action="update.jsp">
+                        <input type="submit" class="form-control btn btn-primary btn-cadPsic" value="Alterar Dados">
+                    </form>
+                </div>
+            </div>    
+        <!-- <h1 class="display-1">Oii</h1>
         <br/><br/><br/>
         <h1 class="display-1">Page profissional</h1>
-        <br/><br/>
+        <br/><br/> -->
       </div>
       <!-- /.jumbotron -->
 
-    </div>
+    
     <!-- /.container -->
 
     <!-- Footer -->
@@ -100,5 +131,5 @@
     </script>
     <script src="../js/validator.min.js"></script>
   </body>
-
+  
 </html>

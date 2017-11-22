@@ -1,7 +1,7 @@
 <%-- 
     Document   : about
     Created on : 26/10/2017, 20:45:37
-    Author     : marya
+    Author     : Jhonatas Gabriel 
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

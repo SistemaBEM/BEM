@@ -21,7 +21,7 @@ import static services.ConectarBanco.getConnection;
 
 /**
  *
- * @author marya
+ * @author Leonardo Marques
  */
 public class UsuarioDAO {
     

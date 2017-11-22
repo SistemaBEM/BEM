@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class TipoAtendimento {
     private int tipoAtendimentoID;

@@ -20,7 +20,7 @@ import static services.ConectarBanco.getConnection;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class PsicologoDAO {
     
@@ -145,11 +145,39 @@ public class PsicologoDAO {
             rs = ps.executeQuery();
             if (rs.next()) {
                 r = true; 
-            } 
+            }             
         } finally {
             closeConnection();
         }
         System.out.println("login já utilizado");
+        return r;
+    }
+    
+    // Astrogilda Caroline
+    public static boolean Update(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        getConnection();
+        PreparedStatement ps;
+        boolean r = false;
+            
+        try {
+            ps = connection.prepareStatement("update cad_psicologo set nome = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, "
+                + "telefoneComercial = ? where login = ?;");
+               
+            ps.setString(1, psic.getNome());
+            ps.setString(2, psic.getRua());
+            ps.setString(3, psic.getNumero());
+            ps.setString(4, psic.getBairro());
+            ps.setString(5, psic.getCidade());
+            ps.setString(6, psic.getContato());
+            ps.setString(7, psic.getLogin());
+            ps.executeUpdate();
+            ps.close();
+            r = true;
+        } catch (SQLException e) {
+            System.out.println("error: " + e);
+        } finally {
+            closeConnection();
+        }
         return r;
     }
      

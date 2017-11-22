@@ -1,7 +1,7 @@
 <%-- 
     Document   : 404
     Created on : 26/10/2017, 20:51:19
-    Author     : marya
+    Author     : Maryanne Alice
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Projeto BEM</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

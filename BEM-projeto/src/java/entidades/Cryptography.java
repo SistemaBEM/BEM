@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class Cryptography {
     

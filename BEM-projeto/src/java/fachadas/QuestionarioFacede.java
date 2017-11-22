@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class QuestionarioFacede {
     

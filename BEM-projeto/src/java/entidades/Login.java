@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author marya
+ * @author Maryanne Alice
  */
 public class Login {
     private String login, password;

@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 25/10/2017, 22:04:18
-    Author     : marya
+    Author     : Jhonatas Gabriel 
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -112,7 +112,7 @@
               <p class="card-text">Ansiedade, ânsia ou nervosismo é uma característica biológica do ser humano e animais, que antecede momentos de perigo real ou imaginário, marcada por sensações corporais desagradáveis, tais como uma sensação de vazio no estômago, coração batendo rápido...</p>
             </div>
             <div class="card-footer">
-              <a href="ansiedade.jsp" class="btn btn-primary">Continuar lendo...</a>
+              <a href="transtornos/ansiedade.jsp" class="btn btn-primary">Continuar lendo...</a>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
                 As pessoas deprimidas podem sentir-se...</p>
             </div>
             <div class="card-footer">
-              <a href="depressao.jsp" class="btn btn-primary">Continuar lendo...</a>
+              <a href="transtornos/depressao.jsp" class="btn btn-primary">Continuar lendo...</a>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@
                 (humano ou animal) superar determinadas...</p>
             </div>
             <div class="card-footer">
-              <a href="estresse.jsp" class="btn btn-primary">Continuar lendo...</a>
+              <a href="transtornos/estresse.jsp" class="btn btn-primary">Continuar lendo...</a>
             </div>
           </div>
         </div>
