@@ -80,7 +80,7 @@
       <!-- Intro Content -->
       <div class="row">
         <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="images/bem.jpg" alt="">
+          <img class="img-fluid rounded mb-4" src="images/bem.png" alt="">
         </div>
         <div class="col-lg-6">
           <h2>Quem somos</h2>
