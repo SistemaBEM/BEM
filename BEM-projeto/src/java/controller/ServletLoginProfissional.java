@@ -90,19 +90,21 @@ public class ServletLoginProfissional extends HttpServlet {
         psic.setSenha(senha);
         
             try {
-                if (PsicologoFacede.verificacaoLogin(psic)) {
+                psic = PsicologoFacede.Login(psic); // Astrogilda Caroline
+                if (PsicologoFacede.verificacaoLogin(psic) && (psic != null)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
+                    
+                    session.setAttribute("psic", psic); // Astrogilda Caroline
+                    
                     response.sendRedirect("loginProfissional/home.jsp");
                 } else {
                     request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
                 }
-            } catch (SQLException ex) {   
+            } catch (SQLException | NoSuchAlgorithmException | UnsupportedEncodingException ex) {
                 Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+            }
+
     }
 
     /**

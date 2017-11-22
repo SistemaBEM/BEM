@@ -38,8 +38,12 @@ public class PsicologoFacede {
     }
     
     // Astrogilda Caroline
-    public static boolean Update(Psicologo psic) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        return PsicologoDAO.Update(psic);
+
+    public static Psicologo Login(Psicologo prof) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        return PsicologoDAO.Login(prof);
+    }
+    public static Psicologo Update(Psicologo prof) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        return PsicologoDAO.Update(prof);
     }
 
 }

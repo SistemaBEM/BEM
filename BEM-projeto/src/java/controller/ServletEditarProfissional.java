@@ -89,9 +89,9 @@ public class ServletEditarProfissional extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String contato = request.getParameter("contato");
-        
         Psicologo psic = (Psicologo) session.getAttribute("psic");
         psic.setLogin(login);
+        
         psic.setNome(nome);
         psic.setRua(rua);
         psic.setNumero(numero);
@@ -100,16 +100,17 @@ public class ServletEditarProfissional extends HttpServlet {
         psic.setContato(contato);
         
         try {
-            if (PsicologoFacede.Update(psic)) {
-                session.setAttribute("psic", psic);
-                response.sendRedirect("loginProfissional/home.jsp");
-                //request.getRequestDispatcher("loginProfissional/home.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
-            }
-        } catch (SQLException ex) {   
-            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
+                psic = PsicologoFacede.Update(psic);
+                if (psic != null) {
+                    session.setAttribute("psic", psic);
+                    response.sendRedirect("loginProfissional/home.jsp");
+                    //request.getRequestDispatcher("loginProfissional/home.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
+                }
+            } catch (SQLException ex) {   
+                Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
