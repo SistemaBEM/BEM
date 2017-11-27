@@ -1,7 +1,7 @@
 <%-- 
     Document   : update
-    Created on : 22/11/2017, 08:43:31
-    Author     : Astrogilda Caroline
+    Created on : 21/11/2017, 16:13:27
+    Author     : Astrogilda Carolines
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -64,7 +64,7 @@
                     </a>
                 </div>
                 <div class="panel panel-default col-xs-6 col-md-6">
-                    <div class="panel-body" style="background-color: #F0F8FF;">
+                    <div class="panel-body">
                         <form class="form" id="contact-form" data-toggle="validator" role="form" method="post" action="../ServletEditarProfissional">
                             <div class=" control-group form-group has-feedback">
                                 <div class="controls">
@@ -73,7 +73,7 @@
                                             <label class="control-label fonte">Nome Completo</label>
                                         </div>
                                         <div class="col-6 col-md-7">
-                                            <input type="text" value="${psic.nome}" class="form-control" name="nome_completo"
+                                            <input type="text" value="${prof.nome}" class="form-control" name="nome_completo"
                                        data-error="Somente letras" pattern="[a-zA-Z ]+"/>
                                             <span class="" aria-hidden="true"></span>
                                         </div>
@@ -86,7 +86,7 @@
                                         <label class="control-label fonte">Rua</label>
                                     </div>
                                     <div class="col-6 col-md-7">
-                                        <input type="text" value="${psic.rua}" class="form-control" name="rua"/>
+                                        <input type="text" value="${prof.rua}" class="form-control" name="rua"/>
                                         <span class="" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                         <label class="control-label fonte">Numero</label>
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" value="${psic.numero}" class="form-control" name="numero"/>
+                                        <input type="text" value="${prof.numero}" class="form-control" name="numero"/>
                                         <span class="" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                         <label class="control-label fonte">Bairro</label>
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" value="${psic.bairro}" class="form-control" name="bairro" 
+                                        <input type="text" value="${prof.bairro}" class="form-control" name="bairro" 
                                                pattern="^[_A-z0-9 ]{1, }$"/>
                                         <span class="" aria-hidden="true"></span>
                                     </div>
@@ -120,7 +120,7 @@
                                         <label class="control-label fonte">Cidade</label>
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" value="${psic.cidade}" class="form-control" name="cidade" 
+                                        <input type="text" value="${prof.cidade}" class="form-control" name="cidade" 
                                                pattern="^[_A-z0-9 ]{1, }$"/>
                                         <span class="" aria-hidden="true"></span>
                                     </div>
@@ -132,7 +132,7 @@
                                         <label class="control-label fonte">Telefone Comercial</label>
                                     </div>
                                     <div class="col-6 col-md-7">
-                                        <input type="text" value="${psic.contato}" class="form-control" name="contato" 
+                                        <input type="text" value="${prof.contato}" class="form-control" name="contato" 
                                data-error="Somente números" pattern="^[0-9]{1,}$"/>
                                         <span class="" aria-hidden="true"></span>
                                     </div>

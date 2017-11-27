@@ -42,8 +42,8 @@ public class PsicologoFacede {
     public static Psicologo Login(Psicologo psic) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         return PsicologoDAO.Login(psic);
     }
-    public static Psicologo Update(Psicologo psic) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        return PsicologoDAO.Update(psic);
+    public static Psicologo Update(Psicologo prof) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        return PsicologoDAO.Update(prof);
     }
 
 }

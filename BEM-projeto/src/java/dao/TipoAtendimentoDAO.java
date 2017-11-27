@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import services.ConectarBanco;
+import static services.ConectarBanco.closeConn;
 import static services.ConectarBanco.closeConnection;
 import static services.ConectarBanco.getConnection;
 
@@ -21,12 +22,10 @@ import static services.ConectarBanco.getConnection;
  */
 public class TipoAtendimentoDAO {
     
-     private static Connection connection = ConectarBanco.getConnection();
-
     public static boolean inserirTA(TipoAtendimento tp) throws SQLException {
         boolean r = false;
-        getConnection();
-        PreparedStatement p;
+        Connection connection = getConnection();
+        PreparedStatement p = null;
         try {
              p = connection.prepareStatement("INSERT INTO tipoatendimento (crp, privado, amil, unimedNatal, hapvida)"
                     + " VALUES (?, ?, ?, ?, ?);");
@@ -40,18 +39,19 @@ public class TipoAtendimentoDAO {
         } catch (SQLException e) {
             System.out.println("error: " + e);
         } finally {
-            closeConnection();
+            closeConn(connection, null, p, null);
         }
         return r;
     }
     
-    public int tipoAtenID() throws SQLException{
+    public int tipoAtenID() throws SQLException {
+        Connection connection = getConnection();
         int value = 0;
-        final String sql = "SELECT tipoAtendimentoID FROM tipoatendimento;";
-        final PreparedStatement ps = connection.prepareStatement(sql);
-        final ResultSet rs = ps.executeQuery();
-        final ResultSetMetaData metaRS = rs.getMetaData();
-        final int columnCount = metaRS.getColumnCount();
+            String sql = "SELECT tipoAtendimentoID FROM tipoatendimento;";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ResultSetMetaData metaRS = rs.getMetaData();
+        int columnCount = metaRS.getColumnCount();
         while (rs.next()) {
             for (int i = 1; i <= columnCount; i++) {
                 value = rs.getInt(i);

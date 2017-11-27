@@ -5,6 +5,9 @@
  */
 package dao;
 
+import entidades.Psicologo;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 /**
@@ -16,8 +19,9 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
-        PsicologoDAO.uniqueLogin("usuario");
+    public static void main(String[] args) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+
+        
     }
     
 }

@@ -5,7 +5,7 @@
  */
 package services;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,15 +18,15 @@ import java.sql.Statement;
  */
 public class ConectarBanco {
     
-    private static Connection connection;
+    public static Connection connection = null;
     public PreparedStatement ps;
     public ResultSet rs;
     public String SQL;
     
     public static void main(String args[]){
         getConnection();
-    }
-
+    }    
+    
     public static Connection getConnection() {
 
             try{
@@ -55,4 +55,32 @@ public class ConectarBanco {
         }
         return connection;
     }
+    
+    public static void closeConn(Connection conn, ResultSet rs, PreparedStatement pstmt, Statement stmt) {
+        if (rs != null) {
+            try {
+                System.out.println(" ResultSet [CLOSE] ");
+                rs.close();
+            } catch (SQLException e) { }
+        }
+        if (stmt != null) {
+            try {
+                System.out.println(" Statement [CLOSE] ");
+                stmt.close();
+            } catch (SQLException e) { }
+        }
+         if (pstmt != null) {
+            try {
+                System.out.println(" PreparedStatement [CLOSE] ");
+                pstmt.close();
+            } catch (SQLException e) { }
+        }
+        if (conn != null) {
+            try {
+                System.out.println(" Connection [CLOSE] ");
+                conn.close();
+            } catch (SQLException e) { }
+        }
+    }
+
 }

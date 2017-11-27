@@ -5,14 +5,11 @@
  */
 package dao;
 
-import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import entidades.QuestionarioDASS21;
-import services.ConectarBanco;
-import static services.ConectarBanco.closeConnection;
+import java.sql.Connection;
+import static services.ConectarBanco.closeConn;
 import static services.ConectarBanco.getConnection;
 
 /**
@@ -21,12 +18,10 @@ import static services.ConectarBanco.getConnection;
  */
 public class QuestionarioDAO {
     
-    private static java.sql.Connection connection = ConectarBanco.getConnection();
-
     public static boolean addResp(QuestionarioDASS21 q) throws SQLException {
-        getConnection();
+        Connection connection = getConnection();
         boolean r = false;
-        PreparedStatement ps;
+        PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement("insert into questionario(tipoQuestionario, dificuldade_para_se_acalmar, "
                 + "boca_seca, sem_vivencia_possitiva, dificuldade_respirar,"
@@ -64,7 +59,7 @@ public class QuestionarioDAO {
         } catch (SQLException e) {
             System.out.println("error: " + e);
         } finally {
-            closeConnection();
+            closeConn(connection, null, ps, null);
         }
         return r;
     }

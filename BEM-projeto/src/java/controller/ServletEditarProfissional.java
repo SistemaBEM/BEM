@@ -80,6 +80,7 @@ public class ServletEditarProfissional extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //processRequest(request, response);
         HttpSession session = request.getSession();
         
         String login = (String) request.getSession().getAttribute("login");
@@ -89,20 +90,21 @@ public class ServletEditarProfissional extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String contato = request.getParameter("contato");
-        Psicologo psic = (Psicologo) session.getAttribute("psic");
-        psic.setLogin(login);
         
-        psic.setNome(nome);
-        psic.setRua(rua);
-        psic.setNumero(numero);
-        psic.setBairro(bairro);
-        psic.setCidade(cidade);
-        psic.setContato(contato);
+        Psicologo prof = (Psicologo) session.getAttribute("prof");
+        prof.setLogin(login);
+        prof.setNome(nome);
+        prof.setRua(rua);
+        prof.setNumero(numero);
+        prof.setBairro(bairro);
+        prof.setCidade(cidade);
+        prof.setContato(contato);
         
         try {
-                psic = PsicologoFacede.Update(psic);
-                if (psic != null) {
-                    session.setAttribute("psic", psic);
+                prof = PsicologoFacede.Update(prof);
+                if (prof != null) {
+                    
+                    session.setAttribute("prof", prof);
                     response.sendRedirect("loginProfissional/home.jsp");
                     //request.getRequestDispatcher("loginProfissional/home.jsp").forward(request, response);
                 } else {

@@ -65,7 +65,7 @@
                     </a>
                 </div>
                 <div class="panel panel-default col-xs-6 col-md-6">
-                    <div class="panel-body" style="background-color: #F0F8FF;">
+                    <div class="panel-body">
                         <h5 class="fonte">Nome: ${prof.nome}</h5>
                         <h5 class="fonte">CRP: ${prof.crp}</h5>
                         <h5 class="fonte">Rua: ${prof.rua}</h5>

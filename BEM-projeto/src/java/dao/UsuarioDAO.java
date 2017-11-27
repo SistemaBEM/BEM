@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import services.ConectarBanco;
+import static services.ConectarBanco.closeConn;
 import static services.ConectarBanco.closeConnection;
 import static services.ConectarBanco.getConnection;
 
@@ -24,17 +25,13 @@ import static services.ConectarBanco.getConnection;
  * @author Leonardo Marques
  */
 public class UsuarioDAO {
-    
-        private static Connection connection = ConectarBanco.getConnection();
-        Cryptography c = new Cryptography();
-        
+            
     public static boolean inserirUser(Usuario u) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         boolean r = false;
-        getConnection();
-        Cryptography c = new Cryptography();
-        PreparedStatement ps;
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
         try {
-             ps = connection.prepareStatement ("INSERT INTO cad_usuario(nome, email, login, senha) VALUES (?,?,?,?);" );
+            ps = connection.prepareStatement ("INSERT INTO cad_usuario(nome, email, login, senha) VALUES (?,?,?,?);" );
             ps.setString(1, u.getNome_completo());
             ps.setString(2, u.getEmail());
             ps.setString(3, u.getUsuario());
@@ -44,16 +41,16 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("error: " + e);
         } finally {
-            closeConnection();
+            closeConn(connection, null, ps, null);
         }
         return r;
     }
     
     public static boolean verificacaoLogin(Usuario u) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {       
-          getConnection();
           boolean r = false;
-          PreparedStatement ps;
-          ResultSet rs;
+          Connection connection = getConnection();
+          PreparedStatement ps = null;
+          ResultSet rs = null;
             try
             {
                 ps = connection.prepareStatement("select * from cad_usuario where login = ? and senha = ?;");
@@ -66,17 +63,17 @@ public class UsuarioDAO {
             } catch (SQLException e) {
                 System.out.println("error: " + e);
             } finally {
-                closeConnection();
+                closeConn(connection, rs, ps, null);
             }
         return r;
     }
     
     public static boolean mudarSenha(MudarSenha ms) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {            
         boolean r = false;
-        getConnection();
-        PreparedStatement ps;
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
         try
-        {
+        {   
             ps = connection.prepareStatement(
             "update cad_usuario set senha = '" + Cryptography(ms.getSenha()) + "' where crp = '" + ms.getValidador() + "' ;" );
             ps.execute();
@@ -84,16 +81,17 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("error: " + e);
         } finally {
-            closeConnection();
+            closeConn(connection, null, ps, null);
         }
         return r;
     }
     
     public static boolean uniqueEmail(String obj) throws SQLException {
         boolean r = false;
-        getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
         try {
             ps = connection.prepareStatement("select nome from cad_usuario where email=" + "'" + obj + "';" );
             rs = ps.executeQuery();
@@ -101,7 +99,7 @@ public class UsuarioDAO {
                 r = true; 
             }
         } finally {
-            closeConnection();
+            closeConn(connection, rs, ps, null);
         }
         System.out.println("Email já cadastrado, caso não lembre de sua senha vá em Esqueci minha senha");
         return r;
@@ -109,9 +107,9 @@ public class UsuarioDAO {
     
     public static boolean uniqueLogin(String obj) throws SQLException {
         boolean r = false;
-        getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             ps = connection.prepareStatement("select nome from cad_usuario where login=" + "'" + obj + "';" );
             ps.execute();
@@ -120,7 +118,7 @@ public class UsuarioDAO {
                 r = true; 
             } 
         } finally {
-            closeConnection();
+            closeConn(connection, rs, ps, null);
         }
         System.out.println("Login já utilizado");
         return r;
