@@ -5,7 +5,6 @@
  */
 package dao;
 
-import entidades.Cryptography;
 import static entidades.Cryptography.Cryptography;
 import entidades.MudarSenha;
 import entidades.Usuario;
@@ -15,9 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import services.ConectarBanco;
 import static services.ConectarBanco.closeConn;
-import static services.ConectarBanco.closeConnection;
 import static services.ConectarBanco.getConnection;
 
 /**
@@ -57,9 +54,12 @@ public class UsuarioDAO {
                 ps.setString(1, u.getUsuario());
                 ps.setString(2, Cryptography(u.getSenha()));
                 rs = ps.executeQuery();
-                if (rs.next()) {
+                
+                if (rs != null) {
                     r = true; 
+                    System.out.println("ENCONTRADO");
                 }
+                
             } catch (SQLException e) {
                 System.out.println("error: " + e);
             } finally {

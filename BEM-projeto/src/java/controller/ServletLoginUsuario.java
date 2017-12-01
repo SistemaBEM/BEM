@@ -9,6 +9,8 @@ import entidades.Usuario;
 import fachadas.UsuarioFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,7 +79,7 @@ public class ServletLoginUsuario extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
         
         String login = request.getParameter("login");
@@ -97,7 +99,9 @@ public class ServletLoginUsuario extends HttpServlet {
                 }
             } catch (SQLException ex) {   
                 Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -1,7 +1,7 @@
 <%-- 
     Document   : 404
     Created on : 26/10/2017, 20:51:19
-    Author     : Leonardo Marques
+    Author     : Astrogilda Caroline
 --%>
 
 
@@ -33,9 +33,9 @@
   </head>
   <body>
     <%
-        String user =(String)session.getAttribute("login");
+        String login =(String)session.getAttribute("login");
         //redirect user to login page if not logged in
-        if((user == null)){
+        if((login == null)){
             response.sendRedirect("index.jsp");
         }
     %>
@@ -54,19 +54,49 @@
     </nav>
         
     <!-- Page Content -->
-    <div class="container">
-        
+    
+
       <!-- Page Heading/Breadcrumbs -->
       <div class="jumbotron">
-        <br/><br/><br/><br/>
-          <h1 class="display-3">Página em construção</h1>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img style="border-radius: 175px;" src="http://ketchcetera.com/images/content/heads/female.jpg" alt="...">
+                    </a>
+                </div>
+                <div class="panel panel-default col-xs-6 col-md-6">
+                    <div class="panel-body">
+                        <h5 class="fonte">Nome: ${prof.nome}</h5>
+                        <h5 class="fonte">CRP: ${prof.crp}</h5>
+                        <h5 class="fonte">Rua: ${prof.rua}</h5>
+                        <h5 class="fonte">Numero: ${prof.numero}</h5>
+                        <h5 class="fonte">Bairro: ${prof.bairro}</h5>
+                        <h5 class="fonte">Cidade: ${prof.cidade}</h5>
+                        <h5 class="fonte">Contato: ${prof.contato}</h5>
+                        <h5 class="fonte">E-mail: ${prof.EMail}</h5>
+                    </div>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <form method="post" action="update.jsp">
+                        <input type="submit" class="form-control btn btn-primary btn-cadPsic" value="Alterar Imagem">
+                    </form>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <form method="post" action="update.jsp">
+                        <input type="submit" class="form-control btn btn-primary btn-cadPsic" value="Alterar Dados">
+                    </form>
+                </div>
+            </div>    
+        <!-- <h1 class="display-1">Oii</h1>
         <br/><br/><br/>
-        <br/><br/>
+        <h1 class="display-1">Page profissional</h1>
+        <br/><br/> -->
       </div>
       <!-- /.jumbotron -->
-      
-  
-    </div>
+
+    
     <!-- /.container -->
 
     <!-- Footer -->
@@ -101,5 +131,5 @@
     </script>
     <script src="../js/validator.min.js"></script>
   </body>
-
+  
 </html>

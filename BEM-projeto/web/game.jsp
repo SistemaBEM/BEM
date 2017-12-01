@@ -64,7 +64,7 @@
                     </figure>
                 </a>
                 <figure class="fig-pic"></figure>
-                <a class="menuLogin" href="questionario/#">
+                <a class="menuLogin" href="#">
                     <figure class="fig-pic">
                         <img src="imgs/imgsOption/game.png" title="game" alt="" class="img-rounded">
                         <figcaption>Jogo Interativo</figcaption>

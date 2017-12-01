@@ -10,6 +10,8 @@ import entidades.Usuario;
 import fachadas.UsuarioFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +80,7 @@ public class ServletCadastroUsuario extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
         
         String nome = request.getParameter("nome_completo");
@@ -102,7 +104,9 @@ public class ServletCadastroUsuario extends HttpServlet {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

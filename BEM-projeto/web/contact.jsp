@@ -64,27 +64,27 @@
       <div class="row">
         <!-- Map Column -->
         <div class="col-lg-8 mb-4">
-          <!-- Embedded Google Map -->
-          <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+            <!-- Embedded Google Map -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4067427.1352436147!2d-38.42301316132733!3d-5.402220365148091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b04df549e8eaad%3A0xa92509ac1c4d9ec4!2sRio+Grande+do+Norte!5e0!3m2!1spt-BR!2sbr!4v1511999496330" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
         <!-- Contact Details Column -->
         <div class="col-lg-4 mb-4">
           <h3>Encontre-nos</h3>
           <p>
-            3481 Melrose Place
-            <br>Beverly Hills, CA 90210
+            Sistema BEM
             <br>
           </p>
+          <!--<p>
+            <abbr title="Email">E-mail</abbr>: (123) 456-7890
+          </p>-->
           <p>
-            <abbr title="Phone">P</abbr>: (123) 456-7890
-          </p>
-          <p>
-            <abbr title="Email">E</abbr>:
-            <a href="mailto:name@example.com">name@example.com
+            <abbr title="Facebook">Facebook</abbr>:
+            <a href="https://www.facebook.com/sistemaBEM/">sistemaBEM
             </a>
           </p>
           <p>
-            <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+            <abbr title="Hours">Horário de funcionamento</abbr>: 
+            <br/> Segunda-feira a Sexta-feira: 8:00 até 18:00
           </p>
         </div>
       </div>

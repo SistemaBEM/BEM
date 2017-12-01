@@ -98,9 +98,7 @@ public class ServletLoginProfissional extends HttpServlet {
                 if (PsicologoFacede.verificacaoLogin(psic) && (prof != null)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
-                    
-                    session.setAttribute("prof", prof); // Astrogilda Caroline
-                    
+                    session.setAttribute("prof", prof); // Astrogilda Caroline                    
                     response.sendRedirect("loginProfissional/home.jsp");
                 } else {
                     request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);

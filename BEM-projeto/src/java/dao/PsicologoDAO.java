@@ -87,6 +87,7 @@ public class PsicologoDAO {
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     r = true; 
+                    System.out.println("ENCONTRADO CADASTRO");
                 }
             } catch (SQLException e) {
                 System.out.println("error: " + e);

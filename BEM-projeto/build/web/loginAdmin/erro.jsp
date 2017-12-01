@@ -1,9 +1,8 @@
 <%-- 
     Document   : 404
     Created on : 26/10/2017, 20:51:19
-    Author     : Leonardo Marques
+    Author     : Maryanne Alice
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,51 +30,50 @@
     <script src="../js/bootstrap-select.js"></script>
     <script src="../vendor/jquery/jquery.min.js"></script>
   </head>
+
   <body>
     <%
-        String user =(String)session.getAttribute("login");
-        //redirect user to login page if not logged in
-        if((user == null)){
+        String login =(String)session.getAttribute("login");
+        if(login==null){
             response.sendRedirect("index.jsp");
         }
+
     %>
         <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand bem_logo" href="../index.jsp">bem</a>
+          <a class="navbar-brand bem_logo" href="../index.jsp">bem</a>
       </div>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../logout.jsp">Sair</a>
-            </li>
-          </ul>
-        </div>
     </nav>
-        
+
     <!-- Page Content -->
     <div class="container">
-        
       <!-- Page Heading/Breadcrumbs -->
       <div class="jumbotron">
-        <br/><br/><br/><br/>
-          <h1 class="display-3">Página em construção</h1>
+        <h1 class="display-1">OPS...</h1>
         <br/><br/><br/>
-        <br/><br/>
+        <h1>Ocorreu um erro! </h1><br/>
+        <h2>Parece que você não está no <a class="navbar-brand bem_logo" href="#">bem</a> =( </h2>
+        <h2> Reveja seu login e/ou sua senha! Venha conosco fazer o <a class="navbar-brand bem_logo" href="#">bem</a> =) </h2>
+        
+        <br/>
       </div>
       <!-- /.jumbotron -->
-      
-  
+
     </div>
     <!-- /.container -->
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Projeto BEM 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
       </div>
       <!-- /.container -->
     </footer>
+    <script type="text/javascript">
+	window.setTimeout("location.href='../index.jsp'",10000);
+    </script>
+    
     <!-- Bootstrap core JavaScript -->
     <script src="../vendor/popper/popper.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -103,3 +101,4 @@
   </body>
 
 </html>
+

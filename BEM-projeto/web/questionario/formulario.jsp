@@ -522,7 +522,7 @@
             <div class="controls">
                 <div class="row">
                     <button type="submit" class="col-10 col-md-10 btn btn-primary ">
-                        <b> me ajude a ficar </b> &nbsp; <p class="navbar-brand bem_logo">bem</p>
+                        <b class="text-btn"> me ajude a ficar </b> &nbsp; <p class="navbar-brand bem_logo">bem</p>
                     </button>
                 </div>
             </div>

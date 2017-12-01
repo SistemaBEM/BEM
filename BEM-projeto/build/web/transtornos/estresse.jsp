@@ -71,7 +71,7 @@
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.jsp">Home</a>
+          <a href="../index.jsp">Home</a>
         </li>
         <li class="breadcrumb-item active">Estresse</li>
       </ol>
@@ -86,12 +86,12 @@
 
           <hr>
 
-          <!-- Date/Time -->
-          <p>Postedo em Janeiro 6, 6666 at 06:66 PM</p>
+            <!-- Date/Time
+            <p>Postedo em Janeiro 6, 6666 at 06:66 PM</p>
 
-          <hr>
+            <hr>
 
-          <!-- Post Content -->
+            Post Content -->
 
             <p>
                 O estresse é o desgaste físico e mental causado pela soma de respostas físicas e mentais

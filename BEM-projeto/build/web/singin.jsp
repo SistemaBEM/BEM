@@ -75,13 +75,13 @@
                         <figcaption>Profissional</figcaption>
                     </figure>
                 </a>
-                <a class="menuLogin" href="loginUsuario/#">
+                <a class="menuLogin" href="loginUsuario/index.jsp">
                     <figure class="fig-pic">
                         <img src="imgs/imgsSingIn/pacientes-bem.png" title="Usuário" alt="" class="img-rounded">
                         <figcaption>Usuário</figcaption>
                     </figure>
                 </a>
-                <a class="menuLogin" href="loginAdmin/#">
+                <a class="menuLogin" href="loginAdmin/index.jsp">
                     <figure class="fig-pic">
                         <img src="imgs/imgsSingIn/administradores.png" title="Administrador" alt="" class="img-rounded">
                         <figcaption>Administrador(a)</figcaption>

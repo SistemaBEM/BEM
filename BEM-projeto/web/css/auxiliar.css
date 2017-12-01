@@ -42,6 +42,16 @@ img{
 .messageServlet {
     color: #c9302c;
 }
+
+.pageConstrucao{
+    width: 600px !important;
+}
+.pageConst{
+    position: relative; 
+    padding: 60px;
+    right: 110px;  
+}
+
 /* ------------------------ */
 
 /* INDEX */ 
@@ -104,6 +114,9 @@ small {
     margin-bottom: 5.5% !important;
 }
 
+.text-btn {
+    font-size: 18px;
+}
 
 /* ------------------------ */
 

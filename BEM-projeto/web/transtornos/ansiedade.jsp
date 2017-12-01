@@ -72,7 +72,7 @@
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
+          <a href="../index.jsp">Home</a>
         </li>
         <li class="breadcrumb-item active">Ansiedade</li>
       </ol>
@@ -87,12 +87,12 @@
 
           <hr>
 
-          <!-- Date/Time -->
-          <p>Postedo em Janeiro 6, 6666 at 06:66 PM</p>
+            <!-- Date/Time 
+            <p>Postedo em Janeiro 6, 6666 at 06:66 PM</p>
 
-          <hr>
+            <hr>
 
-          <!-- Post Content -->
+            Post Content -->
 
           <p>Ansiedade, ânsia ou nervosismo é uma característica biológica do ser humano e animais, que antecede momentos de perigo real ou imaginário, marcada por sensações corporais desagradáveis, tais como uma sensação de vazio no estômago, coração batendo rápido, medo intenso, aperto no tórax, transpiração, e outras alterações associadas à disfunção do sistema nervoso autônomo (ver sintomas mais frequentes abaixo relacionados)</p>
           <br>

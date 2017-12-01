@@ -31,7 +31,6 @@
   </head>
     
   <body class="cadastroPage">
-          
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -50,7 +49,7 @@
             <li class="nav-item">
               <a class="nav-link" href="../contact.jsp">Fale Conosco</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="../singin.jsp">Login</a>
             </li>
           </ul>
@@ -104,7 +103,7 @@
                             <div class="col-6 col-md-2">
                               <label>Forma de Atendimento</label>
                             </div>
-                            <div class="col-6 col-md-7">
+                            <div class="col-6 col-md-7" style="height: 100%;">
                               <div class="dropdown-menu open" role="combobox">
                                 <ul>
                                     <li data-original-index="0" class="">
@@ -289,8 +288,7 @@
                             <div class="col-6 col-md-7">
                                 <input type="text" class="form-control" name="login"
                                        data-error="Entre 6 e 20 caracteres"  data-minlength="6" 
-                                       data-maxlength="20" required/>
-                                
+                                       data-maxlength="20" maxlength="20" required/>
                                 <div class="help-block with-errors">Campo obrigatório</div>
                                 <span class="" aria-hidden="true"></span>
                             </div>
@@ -307,7 +305,7 @@
                             <div class="col-6 col-md-7">
                                 <input type="password" class="form-control" id="senha" name="senha" 
                                        data-error="Entre 6 e 20 caracteres" data-minlength="6" 
-                                       data-maxlength="20" required/>
+                                       data-maxlength="20" maxlength="20" required/>
                                 <div class="help-block with-errors">Campo obrigatório</div>
                                 <span class="" aria-hidden="true"></span>
                             </div>
@@ -325,7 +323,7 @@
                                 <input type="password" class="form-control" name="conf_senha"
                                  data-error="Entre 6 e 20 caracteres" data-minlength="6" data-maxlength="20" 
                                  data-match="#senha" data-match-error="As senha são diferentes"
-                                 required/>
+                                 maxlength="20" required/>
                                 <div class="help-block with-errors">Campo obrigatório</div>
                                 <span class="" aria-hidden="true"></span>
                             </div>

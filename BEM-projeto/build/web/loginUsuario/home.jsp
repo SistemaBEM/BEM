@@ -33,9 +33,9 @@
   </head>
   <body>
     <%
-        String login =(String)session.getAttribute("login");
+        String user =(String)session.getAttribute("login");
         //redirect user to login page if not logged in
-        if((login == null)){
+        if((user == null)){
             response.sendRedirect("index.jsp");
         }
     %>
@@ -55,16 +55,17 @@
         
     <!-- Page Content -->
     <div class="container">
-
+        
       <!-- Page Heading/Breadcrumbs -->
       <div class="jumbotron">
-        <h1 class="display-1">Oii</h1>
+        <br/><br/><br/><br/>
+          <h1 class="display-3">Página em construção</h1>
         <br/><br/><br/>
-        <h1 class="display-1">Page Usuário</h1>
         <br/><br/>
       </div>
       <!-- /.jumbotron -->
-
+      
+  
     </div>
     <!-- /.container -->
 

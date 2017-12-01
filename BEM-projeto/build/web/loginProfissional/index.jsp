@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-6 col-md-10">
                                 <input type="text" class="form-control" name="login"
-                                       data-minlength="6" data-maxlength="20" required/>
+                                       data-minlength="6" data-maxlength="20" maxlength="20" required/>
                                 <div class="help-block with-errors data-min-error data-max-error">Campo obrigatório</div>
                                 <span class="" aria-hidden="true"></span>
                             </div>
@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-6 col-md-10">
                                 <input type="password" class="form-control" id="senha" name="senha" 
-                                       data-minlength="6" data-maxlength="20"
+                                       data-minlength="6" data-maxlength="20" maxlength="20"
                                        required/>
                                 <div class="help-block with-errors data-min-error data-max-error">Campo obrigatório</div>
                                 <span class="" aria-hidden="true"></span>
