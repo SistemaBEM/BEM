@@ -95,13 +95,15 @@ public class ServletLoginUsuario extends HttpServlet {
                     session.setAttribute("login", login);
                     response.sendRedirect("loginUsuario/home.jsp");
                 } else {
-                    request.getRequestDispatcher("loginUsuario/erro.jsp").forward(request, response);
+                    String message = "<center><b>Verifique seu Login e/ou Senha</b></center>";
+                    request.getSession().setAttribute("message", message);
+                    response.sendRedirect("loginUsuario/index.jsp");
                 }
             } catch (SQLException ex) {   
                 Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
     }
 
     /**

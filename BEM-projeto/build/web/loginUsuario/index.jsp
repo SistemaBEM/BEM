@@ -3,7 +3,7 @@
     Created on : 26/10/2017, 20:51:19
     Author     : Leonardo Marques 
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +63,9 @@
             <h3 align="center" class="display-8">Olá, faça seu login no <a class="navbar-brand bem_logo" href="#">bem</a>
             E nos ajude a ajudar!</h3>
             <br/>
+            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+            <c:remove var="message" scope="session" />
+            
         <form class="form-signin" id="contact-form" data-toggle="validator" role="form" method="post" action="../ServletLoginUsuario">
             <div class=" control-group form-group has-feedback">
                     <div class="controls">

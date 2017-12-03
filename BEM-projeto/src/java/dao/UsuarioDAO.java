@@ -55,7 +55,7 @@ public class UsuarioDAO {
                 ps.setString(2, Cryptography(u.getSenha()));
                 rs = ps.executeQuery();
                 
-                if (rs != null) {
+                if (rs.next()) {
                     r = true; 
                     System.out.println("ENCONTRADO");
                 }
@@ -101,7 +101,6 @@ public class UsuarioDAO {
         } finally {
             closeConn(connection, rs, ps, null);
         }
-        System.out.println("Email já cadastrado, caso não lembre de sua senha vá em Esqueci minha senha");
         return r;
     }
     
@@ -120,7 +119,6 @@ public class UsuarioDAO {
         } finally {
             closeConn(connection, rs, ps, null);
         }
-        System.out.println("Login já utilizado");
         return r;
     }
     

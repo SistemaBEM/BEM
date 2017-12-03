@@ -5,6 +5,7 @@
  */
 package dao;
 
+import static entidades.ConvertToTimeStamp.ConvertToTimeStamp;
 import static entidades.Cryptography.Cryptography;
 import entidades.MudarSenha;
 import entidades.Psicologo;
@@ -14,8 +15,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static services.ConectarBanco.closeConn;
-import static services.ConectarBanco.closeConnection;
 import static services.ConectarBanco.getConnection;
 
 /**
@@ -33,7 +39,7 @@ public class PsicologoDAO {
         PreparedStatement ps = null;
         try {
              ps = connection.prepareStatement ("INSERT INTO cad_psicologo(crp, nome, rua, numero, bairro, cidade, "
-                    + "telefoneComercial, telefoneOutro, email, login, senha, forma_atendimento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);" );
+                    + "telefoneComercial, telefoneOutro, email, login, senha, forma_atendimento, sexo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);" );
             ps.setString(1, psic.getCrp());
             ps.setString(2, psic.getNome());
             ps.setString(3, psic.getRua());
@@ -46,6 +52,7 @@ public class PsicologoDAO {
             ps.setString(10, psic.getLogin());
             ps.setString(11, Cryptography(psic.getSenha()));
             ps.setInt(12, tpID);
+            ps.setString(13, psic.getSexo());
             ps.execute(); // filho
             r = true;
         } catch (SQLException e) {
@@ -129,7 +136,6 @@ public class PsicologoDAO {
         } finally {
             closeConn(connection, rs, ps, null);
         }
-        System.out.println("CRP já cadastrado");
         return r;
     }
     
@@ -148,10 +154,31 @@ public class PsicologoDAO {
         } finally {
             closeConn(connection, rs, ps, null);
         }
-        System.out.println("login já utilizado");
         return r;
     }
     
+    public static String SexoPsic(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+            try
+            {
+                ps = connection.prepareStatement("select sexo from cad_psicologo where login = ? and senha = ?;");
+                ps.setString(1, psic.getLogin());
+                ps.setString(2, Cryptography(psic.getSenha()));
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    psic = new Psicologo();
+                    psic.setSexo(rs.getString("sexo"));
+                }
+            } catch (SQLException e) {
+                System.out.println("error: " + e);
+            } finally {
+                closeConn(connection, rs, ps, null);
+            }
+        return psic.getSexo();
+    }
+        
     // Astrogilda Caroline
     
     public static Psicologo Login(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException
@@ -218,5 +245,58 @@ public class PsicologoDAO {
             }
         return psic;
     }
-         
+    
+    public static Collection<Psicologo> Listar() throws ParseException {
+        List<Psicologo> lista = new ArrayList();
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            ps = connection.prepareStatement("select crp, nome, dtSolicitacao, statusValidacao from validacao_cadastro;" );
+            rs = ps.executeQuery();
+            while (rs.next())
+            {
+                Psicologo p = new Psicologo();
+                p.setCrp(rs.getString("crp"));
+                p.setNome(rs.getString("nome"));
+                p.setData((rs.getTimestamp("dtSolicitacao")));
+                p.setStatusValidacao(rs.getBoolean("statusValidacao"));
+                lista.add(p);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PsicologoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeConn(connection, rs, ps, null);
+        }
+        System.out.println(lista);
+        return lista;
+    }
+    
+    public static boolean Validar(Psicologo prof) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        System.out.println(prof);
+        boolean r = false;
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        int rs;
+            try
+            {
+                ps = connection.prepareStatement("update validacao_cadastro set statusValidacao = ? where crp = ?;");
+                
+                ps.setBoolean(1, prof.isStatusValidacao());
+                ps.setString(2, prof.getCrp());
+                rs = ps.executeUpdate();
+                if(rs > 0){
+                    r = true;
+                }
+                
+            } catch (SQLException e) {
+                System.out.println("error: " + e);
+            } finally {
+                closeConn(connection, null, ps, null);
+            }
+        return r;
+    }
+    
+    
 }

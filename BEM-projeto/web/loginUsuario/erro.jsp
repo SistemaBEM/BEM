@@ -71,7 +71,7 @@
       <!-- /.container -->
     </footer>
     <script type="text/javascript">
-	window.setTimeout("location.href='../index.jsp'",20000);
+	window.setTimeout("location.href='index.jsp'",20000);
     </script>
     
     <!-- Bootstrap core JavaScript -->

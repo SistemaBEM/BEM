@@ -4,7 +4,7 @@
     Author     : Astrogilda Caroline
 --%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,18 +18,18 @@
 
     <title>Projeto BEM</title>
     <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/modern-business.css" rel="stylesheet">
-    <link href="../css/auxiliar.css" rel="stylesheet">
-    <link href="../css/selected-css.css" rel="stylesheet">
-    <link href="../css/bootstrap-select.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/modern-business.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/auxiliar.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/selected-css.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-select.css" rel="stylesheet">
     
     <!--SCRIPT-->
-    <script src="../https://code.jquery.com/jquery-3.2.1.slim.js"></script>
-    <script src="../https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/https://code.jquery.com/jquery-3.2.1.slim.js"></script>
+    <script src="${pageContext.request.contextPath}/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
   </head>
   <body>
     <%
@@ -61,7 +61,14 @@
             <div class="row">
                 <div class="col-xs-6 col-md-3">
                     <a href="#" class="thumbnail">
-                        <img style="border-radius: 175px;" src="http://ketchcetera.com/images/content/heads/female.jpg" alt="...">
+                        <c:if test="${sexo == 'F'}">
+                            <img style="border-radius: 175px;" src="../imgs/perfilProfissional/medica.png" alt="..."  >
+                            <!--src="http://ketchcetera.com/images/content/heads/female.jpg" alt="..."-->
+                        </c:if>
+                        <c:if test="${sexo == 'M'}">
+                            <img style="border-radius: 175px;" src="../imgs/perfilProfissional/medico.png" alt="..."  >
+                            <!--src="http://ketchcetera.com/images/content/heads/female.jpg" alt="..."-->
+                        </c:if>
                     </a>
                 </div>
                 <div class="panel panel-default col-xs-6 col-md-6">
@@ -107,8 +114,8 @@
       <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/popper/popper.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
           var mySelect = $('#first-disabled2');
@@ -129,7 +136,7 @@
           });
         });
     </script>
-    <script src="../js/validator.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
   </body>
   
 </html>

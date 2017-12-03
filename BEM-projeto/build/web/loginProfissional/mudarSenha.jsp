@@ -40,16 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="../about.jsp">Sobre Nós</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../contact2.jsp">Contate um Profissional</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../contact.jsp">Fale Conosco</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="../singin.jsp">Login</a>
+              <a class="nav-link" href="index.jsp">Voltar</a>
             </li>
           </ul>
         </div>
@@ -67,7 +58,7 @@
             <br/><br/>
         
         <form class=" form form-signin" data-toggle="validator" role="form" method="post" action="../ServletMudarSenha">
-            <div class="control-group form-group has-feedback">
+                <div class="control-group form-group has-feedback">
                     <div class="row">
                         <div class="col-6 col-md-12">
                             <label class="control-label">C.R.P.</label>

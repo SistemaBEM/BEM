@@ -83,6 +83,21 @@ public class ServletCadastroUsuario extends HttpServlet {
             throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
         
+        String message = null;
+        String m = null;
+        
+        try {
+            if (UsuarioFacede.uniqueEmail(request.getParameter("EMail"))) {
+                m = "E-mail";
+            } else if (UsuarioFacede.uniqueLogin(request.getParameter("login"))) {
+                m = "Login";
+            } else {
+                m = " E-mail e Login";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletCadastroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         String nome = request.getParameter("nome_completo");
         String email = request.getParameter("EMail");
         String login = request.getParameter("login");
@@ -100,13 +115,16 @@ public class ServletCadastroUsuario extends HttpServlet {
                     session.setAttribute("login", login);
                     response.sendRedirect("cadastroUsuario/sucesso.jsp");
                 } else {
-                    request.getRequestDispatcher("cadastroUsuario/erro.jsp").forward(request, response);
+                    message = "<center>"+ m + " já cadastrado(s)</center>";
+                    request.getSession().setAttribute("message", message);
+                    response.sendRedirect("cadastroUsuario/index.jsp");
+                    //request.getRequestDispatcher("cadastroUsuario/erro.jsp").forward(request, response);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
         
     }
 

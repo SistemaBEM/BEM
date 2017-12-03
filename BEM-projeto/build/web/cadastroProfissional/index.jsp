@@ -4,7 +4,7 @@
     Author     : Maryanne Alice
 --%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -16,12 +16,12 @@
     <meta name="author" content="">
         <title>Projeto BEM</title>
     <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/modern-business.css" rel="stylesheet">
-    <link href="../css/auxiliar.css" rel="stylesheet">
-    <link href="../css/selected-css.css" rel="stylesheet">
-    <link href="../css/bootstrap-select.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/modern-business.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/auxiliar.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/selected-css.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-select.css" rel="stylesheet">
     
     <!--SCRIPT-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.js"></script>
@@ -65,7 +65,12 @@
         <h2 class="display-8">Olá, quer nos ajudar nessa missão de fazer o <a class="navbar-brand bem_logo" href="#">bem</a>? Então cadastre-se!</h2>
         <br/>
         <ol class="breadcrumb"> Seu cadastro será submetido a validação após conclusão.</ol>
-        <br/><br/>
+        
+            <br/>
+            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+            <c:remove var="message" scope="session" /> 
+            <br/><br/>
+        
             <form class="form" id="contact-form" data-toggle="validator" role="form" method="post" action="../ServletCadastroProfissional">
                 <div class=" control-group form-group has-feedback">
                     <div class="controls">
@@ -82,6 +87,26 @@
                         </div>
                     </div>
                 </div><br/>
+                
+                <div class=" control-group form-group has-feedback">
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                                <label class="control-label">Sexo</label>
+                            </div>
+                            <div class="col-6 col-md-7">
+                                <select name="select_sexo" class="selectpicker show-menu-arrow form-control"  
+                                        data-error="Campo obrigatório" required>                    
+                                    <option value="F">Feminino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+                                <span class="" aria-hidden="true"></span>
+                                <div class="help-block with-errors">Campo obrigatório</div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/>
+                
                 <div class="control-group form-group has-feedback">
                     <div class="row">
                         <div class="col-6 col-md-2">
@@ -132,7 +157,7 @@
                                     </li>
                                 </ul>
                                 </div>
-                                <select name="select_atendimento" class="selectpicker show-menu-arrow form-control" multiple="" 
+                                <select name="select_atendimento" class="selectpicker form-control" multiple="" 
                                         data-error="Campo obrigatório" required>                    
                                     <option value="privado">Privado</option>
                                     <option value="amil">Amil</option>
@@ -362,8 +387,8 @@
       <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/popper/popper.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
           var mySelect = $('#first-disabled2');
@@ -384,6 +409,6 @@
           });
         });
     </script>
-    <script src="../js/validator.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
   </body>
 </html>

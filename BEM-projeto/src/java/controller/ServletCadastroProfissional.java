@@ -88,6 +88,22 @@ public class ServletCadastroProfissional extends HttpServlet {
             throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
         
+        String message = null;
+        String m = null;
+        
+        try {
+            if (PsicologoFacede.uniqueCRP(request.getParameter("crp"))) {
+                m = "CRP";
+            } else if (PsicologoFacede.uniqueLogin(request.getParameter("login"))) {
+                m = "Login";
+            } else {
+                m = " CRP e Login";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletCadastroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         String nome = request.getParameter("nome_completo");
         String crp = request.getParameter("crp");
         String rua = request.getParameter("rua");
@@ -99,6 +115,7 @@ public class ServletCadastroProfissional extends HttpServlet {
         String email = request.getParameter("EMail");
         String login = request.getParameter("login");
         String senha = request.getParameter("conf_senha");
+        String sexo = request.getParameter("select_sexo");
                 
         if (numero == ""){ numero = "s/n"; }
         
@@ -131,6 +148,7 @@ public class ServletCadastroProfissional extends HttpServlet {
         psic.setEMail(email);
         psic.setLogin(login);
         psic.setSenha(senha);
+        psic.setSexo(sexo);
                 
             try {
                 if ( TipoAtendimentoFacede.inserirTA(ta)&&PsicologoFacede.inserirPS(psic)
@@ -139,13 +157,16 @@ public class ServletCadastroProfissional extends HttpServlet {
                     session.setAttribute("crp", crp);
                     response.sendRedirect("cadastroProfissional/sucesso.jsp");
                 } else {
-                    request.getRequestDispatcher("cadastroProfissional/erro.jsp").forward(request, response);
+                    message = "<center>"+ m + " já cadastrado(s)</center>";
+                    request.getSession().setAttribute("message", message);
+                    response.sendRedirect("cadastroProfissional/index.jsp");
+                    //request.getRequestDispatcher("cadastroProfissional/erro.jsp").forward(request, response);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
     }
 
     /**

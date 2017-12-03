@@ -5,17 +5,46 @@
  */
 package entidades;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Maryanne Alice
  */
 public class Psicologo {
         
-    private String nome, rua, numero, bairro, cidade, EMail, login, senha, crp, contato, contatoOp;
+    private String nome, rua, numero, bairro, cidade, EMail, login, senha, crp, contato, contatoOp, sexo; // data statusValidacao;
+    private boolean statusValidacao;
+    private Timestamp data; 
+    
+    public String getSexo() {
+        return sexo;
+    }
 
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+ 
     public Psicologo() {
     }
 
+    public Timestamp getData() {
+        return data;
+    }
+
+    public void setData(Timestamp data) {
+        this.data = data;
+    }
+    
+    
+    public boolean isStatusValidacao() {
+        return statusValidacao;
+    }
+
+    public void setStatusValidacao(boolean statusValidacao) {
+        this.statusValidacao = statusValidacao;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -104,10 +133,12 @@ public class Psicologo {
     public void setContatoOp(String contatoOp) {
         this.contatoOp = contatoOp;
     }
-    
+
     @Override
     public String toString() {
-        return "Psicologo{" + "nome=" + nome + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade=" + cidade + ", EMail=" + EMail + ", login=" + login + ", senha=" + senha + ", crp=" + crp + ", contato=" + contato + ", contatoOp=" + contatoOp + '}';
+        return "Psicologo{" + "nome=" + nome + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade=" + cidade + ", EMail=" + EMail + ", login=" + login + ", senha=" + senha + ", crp=" + crp + ", contato=" + contato + ", contatoOp=" + contatoOp + ", sexo=" + sexo + ", statusValidacao=" + statusValidacao + ", data=" + data + '}';
     }
+
+    
     
 }

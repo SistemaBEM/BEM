@@ -4,6 +4,7 @@
     Author     : Leonardo Marques
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,20 +16,20 @@
     <meta name="author" content="">
         <title>Projeto BEM</title>
     <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/modern-business.css" rel="stylesheet">
-    <link href="../css/auxiliar.css" rel="stylesheet">
-    <link href="../css/selected-css.css" rel="stylesheet">
-    <link href="../css/bootstrap-select.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/modern-business.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/auxiliar.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/selected-css.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-select.css" rel="stylesheet">
     
     <!--SCRIPT-->
 
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/https://code.jquery.com/jquery-3.2.1.slim.js"></script>
+    <script src="${pageContext.request.contextPath}/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
   </head>
     
   <body>
@@ -65,7 +66,12 @@
         <h2 class="display-8">Olá, queremos te ajudar a ficar <a class="navbar-brand bem_logo" href="#">bem</a> =) Então cadastre-se!</h2>
         <br/>
         <ol class="breadcrumb">Seu cadastro será necessário para poder avaliar os profissionais que estão juntos conosco nessa missão =D</ol>
-        <br/><br/>
+        
+            <br/>
+            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+            <c:remove var="message" scope="session" /> 
+            <br/><br/>
+            
             <form class="form" id="contact-form" data-toggle="validator" role="form" method="post" action="../ServletCadastroUsuario">
                 <div class=" control-group form-group has-feedback">
                     <div class="controls">
@@ -81,7 +87,8 @@
                             </div>
                         </div>
                     </div>
-                </div><br/>
+                </div>
+                <br/>
                 <div class="control-group form-group has-feedback">
                     <div class="row">
                         <div class="col-6 col-md-2">
@@ -95,6 +102,21 @@
                     </div>
                     </div>
                 </div>
+                <br/>
+                <div class="control-group form-group">
+                    <div class="row">
+                        <div class="col-6 col-md-2">
+                            <label class="control-label">Telefone</label>
+                        </div>
+                    <div class="col-6 col-md-7">
+                        <input type="text" class="form-control" name="contato" 
+                               data-error="Somente números" pattern="^[0-9]{1,}$" required/>
+                                <div class="help-block with-errors">Campo obrigatório</div>
+                                <span class="" aria-hidden="true"></span>
+                    </div>
+                    </div>
+                </div>
+                
                 <br/>
                 <div class="row">
                     <div class="col-6 col-md-8">
@@ -175,8 +197,8 @@
       <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/popper/popper.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
           var mySelect = $('#first-disabled2');
@@ -197,6 +219,6 @@
           });
         });
     </script>
-    <script src="../js/validator.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
   </body>
 </html>

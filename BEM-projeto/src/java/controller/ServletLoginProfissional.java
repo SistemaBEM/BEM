@@ -93,15 +93,22 @@ public class ServletLoginProfissional extends HttpServlet {
         prof.setLogin(login);
         prof.setSenha(senha);
         
+
             try {
                 prof = PsicologoFacede.Login(psic); // Astrogilda Caroline
                 if (PsicologoFacede.verificacaoLogin(psic) && (prof != null)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
-                    session.setAttribute("prof", prof); // Astrogilda Caroline                    
+                    session.setAttribute("prof", prof); // Astrogilda Caroline
+                    
+                    String sexo = PsicologoFacede.SexoPsic(psic);
+                    request.getSession().setAttribute("sexo", sexo);
+                    
                     response.sendRedirect("loginProfissional/home.jsp");
                 } else {
-                    request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);
+                    String message = "<center><b>Verifique seu Login e/ou Senha</b></center>";
+                    request.getSession().setAttribute("message", message);
+                    response.sendRedirect("loginProfissional/index.jsp");
                 }
             } catch (SQLException | NoSuchAlgorithmException | UnsupportedEncodingException ex) {
                 Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);

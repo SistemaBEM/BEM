@@ -11,6 +11,8 @@ import entidades.Psicologo;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Collection;
 
 /**
  *
@@ -37,6 +39,10 @@ public class PsicologoFacede {
         return PsicologoDAO.solicitacaoCadastral(psic);
     }
     
+    public static Collection<Psicologo> Listar() throws ParseException {
+        return PsicologoDAO.Listar();
+    }
+    
     // Astrogilda Caroline
 
     public static Psicologo Login(Psicologo psic) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -45,5 +51,13 @@ public class PsicologoFacede {
     public static Psicologo Update(Psicologo prof) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         return PsicologoDAO.Update(prof);
     }
+    
+    public static boolean Validar(Psicologo prof) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        return PsicologoDAO.Validar(prof);
+    }
 
+    public static String SexoPsic(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        return PsicologoDAO.SexoPsic(psic);
+    }
+    
 }

@@ -11,9 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import services.ConectarBanco;
 import static services.ConectarBanco.closeConn;
-import static services.ConectarBanco.closeConnection;
 import static services.ConectarBanco.getConnection;
 
 /**

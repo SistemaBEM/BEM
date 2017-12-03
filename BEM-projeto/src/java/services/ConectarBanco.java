@@ -49,13 +49,6 @@ public class ConectarBanco {
          return connection;
     }
     
-    public static Connection closeConnection() throws SQLException {
-        if(connection != null){
-            connection.close();
-        }
-        return connection;
-    }
-    
     public static void closeConn(Connection conn, ResultSet rs, PreparedStatement pstmt, Statement stmt) {
         if (rs != null) {
             try {

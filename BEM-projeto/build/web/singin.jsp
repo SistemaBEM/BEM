@@ -81,7 +81,7 @@
                         <figcaption>Usuário</figcaption>
                     </figure>
                 </a>
-                <a class="menuLogin" href="loginAdmin/index.jsp">
+                <a class="menuLogin" href="loginAdministrador/index.jsp">
                     <figure class="fig-pic">
                         <img src="imgs/imgsSingIn/administradores.png" title="Administrador" alt="" class="img-rounded">
                         <figcaption>Administrador(a)</figcaption>
