@@ -88,11 +88,14 @@ public class ServletCadastroUsuario extends HttpServlet {
         
         try {
             if (UsuarioFacede.uniqueEmail(request.getParameter("EMail"))) {
-                m = "E-mail";
+                m = "E-mail " + request.getParameter("EMail") + " já cadastrado ";
             } else if (UsuarioFacede.uniqueLogin(request.getParameter("login"))) {
-                m = "Login";
-            } else {
-                m = " E-mail e Login";
+                m = "Login " + request.getParameter("login") + " já cadastrado ";
+            } 
+            if ( UsuarioFacede.uniqueEmail(request.getParameter("EMail"))
+                    && UsuarioFacede.uniqueLogin(request.getParameter("login"))) {
+                m = " E-mail " +request.getParameter("EMail")+ " e Login " +request.getParameter("login") 
+                        + " já cadastrados";
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServletCadastroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,10 +118,9 @@ public class ServletCadastroUsuario extends HttpServlet {
                     session.setAttribute("login", login);
                     response.sendRedirect("cadastroUsuario/sucesso.jsp");
                 } else {
-                    message = "<center>"+ m + " já cadastrado(s)</center>";
+                    message = "<center><b>"+ m + "</b></center>";
                     request.getSession().setAttribute("message", message);
                     response.sendRedirect("cadastroUsuario/index.jsp");
-                    //request.getRequestDispatcher("cadastroUsuario/erro.jsp").forward(request, response);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);

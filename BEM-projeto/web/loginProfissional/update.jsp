@@ -3,7 +3,7 @@
     Created on : 21/11/2017, 16:13:27
     Author     : Astrogilda Carolines
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,14 @@
             <div class="row">
                 <div class="col-xs-6 col-md-3">
                     <a href="#" class="thumbnail">
-                        <img style="border-radius: 175px;" src="http://ketchcetera.com/images/content/heads/female.jpg" alt="...">
+                        <c:if test="${sexo == 'F'}">
+                            <img style="border-radius: 175px;" src="../imgs/perfilProfissional/medica.png" alt="..."  >
+                            <!--src="http://ketchcetera.com/images/content/heads/female.jpg" alt="..."-->
+                        </c:if>
+                        <c:if test="${sexo == 'M'}">
+                            <img style="border-radius: 175px;" src="../imgs/perfilProfissional/medico.png" alt="..."  >
+                            <!--src="http://ketchcetera.com/images/content/heads/female.jpg" alt="..."-->
+                        </c:if>
                     </a>
                 </div>
                 <div class="panel panel-default col-xs-6 col-md-6">

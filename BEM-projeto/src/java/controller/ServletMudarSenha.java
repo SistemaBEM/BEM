@@ -5,8 +5,7 @@
  */
 package controller;
 
-import dao.PsicologoDAO;
-import dao.UsuarioDAO;
+
 import entidades.MudarSenha;
 import fachadas.PsicologoFacede;
 import fachadas.UsuarioFacede;

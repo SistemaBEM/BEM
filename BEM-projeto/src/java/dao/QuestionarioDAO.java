@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import entidades.QuestionarioDASS21;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import static services.ConectarBanco.closeConn;
 import static services.ConectarBanco.getConnection;
 
@@ -64,5 +66,20 @@ public class QuestionarioDAO {
         return r;
     }
 
+    public int questionarioID() throws SQLException {
+        Connection connection = getConnection();
+        int value = 0;
+            String sql = "SELECT questionarioID FROM questionario;";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ResultSetMetaData metaRS = rs.getMetaData();
+        int columnCount = metaRS.getColumnCount();
+        while (rs.next()) {
+            for (int i = 1; i <= columnCount; i++) {
+                value = rs.getInt(i);
+            }
+        }
+        return value;
+    }
     
 }

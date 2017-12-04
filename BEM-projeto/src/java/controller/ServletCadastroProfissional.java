@@ -5,8 +5,6 @@
  */
 package controller;
 
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
-import dao.PsicologoDAO;
 import entidades.Psicologo;
 import entidades.TipoAtendimento;
 import fachadas.PsicologoFacede;
@@ -16,10 +14,8 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -93,11 +89,12 @@ public class ServletCadastroProfissional extends HttpServlet {
         
         try {
             if (PsicologoFacede.uniqueCRP(request.getParameter("crp"))) {
-                m = "CRP";
+                m = "CRP " +request.getParameter("crp")+ " já cadastrado";
             } else if (PsicologoFacede.uniqueLogin(request.getParameter("login"))) {
-                m = "Login";
+                m = "Login " + request.getParameter("login") + " já cadastrado";
             } else {
-                m = " CRP e Login";
+                m = " CRP "+request.getParameter("crp")+ " e Login " +request.getParameter("login")
+                        + " já cadastrados";
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServletCadastroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,10 +154,9 @@ public class ServletCadastroProfissional extends HttpServlet {
                     session.setAttribute("crp", crp);
                     response.sendRedirect("cadastroProfissional/sucesso.jsp");
                 } else {
-                    message = "<center>"+ m + " já cadastrado(s)</center>";
+                    message = "<center><b>"+ m + "</b></center>";
                     request.getSession().setAttribute("message", message);
                     response.sendRedirect("cadastroProfissional/index.jsp");
-                    //request.getRequestDispatcher("cadastroProfissional/erro.jsp").forward(request, response);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);

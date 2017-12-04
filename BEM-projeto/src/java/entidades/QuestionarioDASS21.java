@@ -12,27 +12,6 @@ import java.util.ArrayList;
  * @author Maryanne Alice
  */
 public class QuestionarioDASS21 {
-   /* ArrayList<Object> respostas = new ArrayList<>();
-    
-    public QuestionarioDASS21() {
-        
-    }
-
-    public ArrayList<Object> getRespostas() {
-        return respostas;
-    }
-
-    public void setRespostas(ArrayList<Object> respostas) {
-        this.respostas = respostas;
-    }
-    
-    
-    public void addResposta(ArrayList<Object> arr) {
-        respostas.addAll(arr);
-    }
-    
-    
-    */
     
     private int pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, 
             pergunta9, pergunta10, pergunta11, pergunta12, pergunta13, pergunta14, pergunta15, pergunta16, 

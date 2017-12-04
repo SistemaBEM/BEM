@@ -100,7 +100,7 @@
     <div class="container">
 
         <div class="game">
-        <button type="button" onclick="location.href = 'game.jsp'" class="btn btn-primary btn-game">JOGAR</button>
+        <button type="button" onclick="location.href = 'game.jsp'" class="btn btn-primary btn-game">INICIAR</button>
       </div><br>
 
       <!-- Marketing Icons Section -->

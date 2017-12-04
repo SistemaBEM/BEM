@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -35,6 +36,11 @@ public class Main {
             p.setCrp("1230");
             p.setStatusValidacao(false);
             PsicologoDAO.Validar(p); */
+           
+           ArrayList<String> list = new ArrayList<>();
+        list.add("cat");
+        list.add("dog");
+        System.out.println(list);
            
     }
     

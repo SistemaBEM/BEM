@@ -5,11 +5,10 @@
  */
 package controller;
 
-import dao.QuestionarioDAO;
+import entidades.Dass21_Score;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,9 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.QuestionarioDASS21;
+import fachadas.Dass21_ScoreFacede;
 import fachadas.QuestionarioFacede;
+import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
-import services.ConectarBanco;
 
 /**
  *
@@ -126,9 +126,36 @@ public class ServletFormulario extends HttpServlet {
         q.setPergunta19(r19);
         q.setPergunta20(r20);
         q.setPergunta21(r21);
+        
+        Dass21_Score ds = new Dass21_Score();
+        ArrayList<Integer> arr = new ArrayList();
+        arr.add(q.getPergunta1());
+        arr.add(q.getPergunta2());
+        arr.add(q.getPergunta3());
+        arr.add(q.getPergunta4());
+        arr.add(q.getPergunta5());
+        arr.add(q.getPergunta6());
+        arr.add(q.getPergunta7());
+        arr.add(q.getPergunta8());
+        arr.add(q.getPergunta9());
+        arr.add(q.getPergunta10());
+        arr.add(q.getPergunta11());
+        arr.add(q.getPergunta12());
+        arr.add(q.getPergunta13());
+        arr.add(q.getPergunta14());
+        arr.add(q.getPergunta15());
+        arr.add(q.getPergunta16());
+        arr.add(q.getPergunta17());
+        arr.add(q.getPergunta18());
+        arr.add(q.getPergunta19());
+        arr.add(q.getPergunta20());
+        arr.add(q.getPergunta21());
+        ds.setScore(arr);
+        
        
         try {
-                if (QuestionarioFacede.adicionarResposta(q)) {
+                if (QuestionarioFacede.adicionarResposta(q) && 
+                        Dass21_ScoreFacede.inserirScore(ds)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("r1", r1);
                     response.sendRedirect("questionario/redirecionamento-game.jsp");

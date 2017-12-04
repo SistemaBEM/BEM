@@ -52,6 +52,10 @@ img{
     right: 110px;  
 }
 
+.errorOlColor{
+    background-color: #FA5858 !important;
+}
+
 /* ------------------------ */
 
 /* INDEX */ 

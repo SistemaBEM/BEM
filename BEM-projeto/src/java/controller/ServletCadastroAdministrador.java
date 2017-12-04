@@ -7,14 +7,12 @@ package controller;
 
 import entidades.Administrador;
 import fachadas.AdministradorFacede;
-import fachadas.UsuarioFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -89,11 +87,15 @@ public class ServletCadastroAdministrador extends HttpServlet {
         
         try {
             if (AdministradorFacede.uniqueCpf(request.getParameter("cpf"))) {
-                m = "CPF";
-            } else if (AdministradorFacede.uniqueLogin(request.getParameter("login"))) {
-                m = "Login";
-            } else {
-                m = " CPF e Login";
+                m = "CPF " + request.getParameter("cpf") + " já cadastrado ";
+            }
+            if (AdministradorFacede.uniqueLogin(request.getParameter("login"))) {
+                m = "Login " + request.getParameter("login") + " já cadastrado ";
+            } 
+            if (AdministradorFacede.uniqueLogin(request.getParameter("login")) 
+                    && AdministradorFacede.uniqueCpf(request.getParameter("cpf"))) {
+                m = "CPF " + request.getParameter("cpf") + " e Login  " + request.getParameter("login") + 
+                        " já cadastrados  ";
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServletCadastroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,7 +122,7 @@ public class ServletCadastroAdministrador extends HttpServlet {
                     session.setAttribute("login", login);
                     response.sendRedirect("cadastroAdministrador/sucesso.jsp");
                 } else {
-                    message = "<center>"+ m + " já cadastrado(s)</center>";
+                    message = "<center><b>"+ m + "</b></center>";
                     request.getSession().setAttribute("message", message);
                     response.sendRedirect("cadastroAdministrador/index.jsp");
                 }

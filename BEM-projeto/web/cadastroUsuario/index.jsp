@@ -68,7 +68,7 @@
         <ol class="breadcrumb">Seu cadastro será necessário para poder avaliar os profissionais que estão juntos conosco nessa missão =D</ol>
         
             <br/>
-            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+            <ol <c:if test="${message != null}"> class="breadcrumb errorOlColor" </c:if> >${message}</ol>
             <c:remove var="message" scope="session" /> 
             <br/><br/>
             

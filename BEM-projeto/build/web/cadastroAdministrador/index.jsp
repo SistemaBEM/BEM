@@ -57,13 +57,13 @@
         <!-- Page Content -->
     <div class="container">
       <!-- Page Heading/Breadcrumbs -->    
-        <div class="title-page">
+        <div class="jumbotron title-page">
         <br/><br/>
         <h2 class="display-8">
             Cadastro de Administrador
         </h2>
         <br/>
-        <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+        <ol <c:if test="${message != null}"> class="breadcrumb errorOlColor" </c:if> >${message}</ol>
             <c:remove var="message" scope="session" /> 
         <br/><br/>
             <form class="form" id="contact-form" data-toggle="validator" role="form" method="post" action="../ServletCadastroAdministrador">
