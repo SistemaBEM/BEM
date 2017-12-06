@@ -47,10 +47,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="../ServletLoginUsuario">Avaliar Profissional</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/ServletEncaminhamentoApply">Avaliar Profissional</a>
             </li>
            <li class="nav-item">
-              <a class="nav-link" href="../ServletHistoricoAvaliacoes">Histórico de Avaliações</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/ServletHistoricoAvaliacoes">Histórico de Avaliações</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../logout.jsp">Sair</a>
@@ -62,11 +62,11 @@
     <!-- Page Content -->
     <div class="container">       
         <!-- Page Heading/Breadcrumbs -->
-        <div class="jumbotron">
+       <!-- <div class="jumbotron">
             <h3> Veja o histórico de avaliações dos profissionais =D </h3>
             <br/>
-            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
-            <c:remove var="message" scope="session" />
+            <ol c:if test="$message != null}"> class="breadcrumb" /c:if> >$message}</ol>
+            c:remove var="message" scope="session" />
             <br/>
         
             <table class="table">
@@ -75,22 +75,27 @@
                         <th><center>Nome do Profissional</center></th>
                         <th><center>Nota Atribuída</center></th>
                         <th><center>Comentário</center></th>
-                        <!--<th></th>-->
-                    </tr>
+              <!--      </tr>
                  </thead>
                 <tbody>
-                <c:forEach var="ap" items="${lista}" varStatus="ordem">
+                c:forEach var="ap" items="$lista}" varStatus="ordem">
                     <tr>
-                        <td><center>${ap.nome}</td>
-                        <td><center>${ap.avaliacao}</center></td>
-                        <td><center>${ap.comentario}</center></td>
-                        <!--<td> <a href="#">Excluir solicitação</a> </td>-->
+                        <td><center>$ap.nome}</td>
+                        <td><center>$ap.avaliacao}</center></td>
+                        <td><center>$ap.comentario}</center></td>
                     </tr>
-                </c:forEach>
+                /c:forEach>
                 </tbody>
             </table> 
-            <br/>
+            <br/>--> 
             
+        <div id="figure" class="pageConst">
+            <figure class="fig-pic" align="center">
+                <img src="images/construcaoPage.png" title="Página em Construção!" alt="" class="pageConstrucao">
+            </figure>
+        </div>
+            
+            <br/>
         </div>
         <!-- /.jumbotron -->
     </div>

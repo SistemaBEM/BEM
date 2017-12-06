@@ -36,10 +36,8 @@ public class ServletHistoricoAvaliacoes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException, NoSuchAlgorithmException {
         
-        /*    HttpSession session = request.getSession();
+       /*     HttpSession session = request.getSession();
             String login = (String) session.getAttribute("login");
-            
-            System.out.println("C O N T R O L L E R.ServletHistoricoAvaliacoes.processRequest() - " + login);
             
         if (!ApplyProfissionalFacede.Listar(login).isEmpty()) {
             request.setAttribute("lista", ApplyProfissionalFacede.Listar(login));

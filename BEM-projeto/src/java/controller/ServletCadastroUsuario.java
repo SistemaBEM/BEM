@@ -6,6 +6,7 @@ package controller;
  * and open the template in the editor.
  */
 
+import static entidades.Cryptography.Cryptography;
 import entidades.Usuario;
 import fachadas.UsuarioFacede;
 import java.io.IOException;

@@ -47,7 +47,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="${pageContext.request.contextPath}/ServletApplyProfissional">Avaliar Profissional</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/ServletEncaminhamentoApply">Avaliar Profissional</a>
             </li>
            <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/ServletHistoricoAvaliacoes">Histórico de Avaliações</a>

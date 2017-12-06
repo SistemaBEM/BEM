@@ -95,10 +95,8 @@ public class ServletLoginUsuario extends HttpServlet {
                 if (UsuarioFacede.verificacaoLogin(u)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
-                    response.sendRedirect("ServletEncaminhamentoApply");
-                   
-                    //response.sendRedirect("ServletDirecionamentoApply");
-                } else {
+                    response.sendRedirect("/BEM-projeto/ServletEncaminhamentoApply");
+            } else {
                     String message = "<center><b>Verifique seu Login e/ou Senha</b></center>";
                     request.getSession().setAttribute("message", message);
                     response.sendRedirect("loginUsuario/index.jsp");

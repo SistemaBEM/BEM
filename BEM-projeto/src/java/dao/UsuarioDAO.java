@@ -54,13 +54,12 @@ public class UsuarioDAO {
                 ps = connection.prepareStatement("select * from cad_usuario where login = ? and senha = ?;");
                 ps.setString(1, u.getUsuario());
                 ps.setString(2, Cryptography(u.getSenha()));
+                System.out.println("senha" +  Cryptography(u.getSenha()));
                 rs = ps.executeQuery();
                 
-                if (ps != null) {
+                while (rs.next()) {
                     r = true; 
-                    System.out.println("ENCONTRADO");
-                } else {
-                    System.out.println("NÃO ENCONTRADO");
+                    System.out.println("ENCONTRADO CADASTRO");
                 }
                 
             } catch (SQLException e) {

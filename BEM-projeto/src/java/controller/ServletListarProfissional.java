@@ -37,6 +37,7 @@ public class ServletListarProfissional extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         
+        
         if (!PsicologoFacede.Listar().isEmpty()) {
             request.setAttribute("listaPsicologos", PsicologoFacede.Listar());
             getServletContext().getRequestDispatcher("/validacaoPsicologo/index.jsp").forward(request, response);

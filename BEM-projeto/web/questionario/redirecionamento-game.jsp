@@ -33,12 +33,12 @@
   </head>
 
   <body>
-    <%
+   <% /*
         Integer r1 =(Integer)session.getAttribute("r1");
         if((r1 == null)){
            response.sendRedirect("formulario.jsp");
         }
-    %>
+    */%> 
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -222,6 +222,6 @@
     <script src="../js/contact_me.js"></script>
     <script src="../js/bootstrap-select.js"></script>
     <script src="../js/validator.min.js"></script>
-    <% r1 = null;%>
+    <%/* r1 = null;*/ %>
   </body>
 </html>

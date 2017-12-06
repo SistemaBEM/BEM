@@ -37,7 +37,6 @@ public class ServletEncaminhamentoApply extends HttpServlet {
             throws ServletException, IOException, ParseException {
         if (!PsicologoFacede.Listar().isEmpty()) {
             request.setAttribute("listaPsicologos", PsicologoFacede.Listar());
-            System.out.println( PsicologoFacede.Listar());
             getServletContext().getRequestDispatcher("/loginUsuario/home.jsp").forward(request, response);
             System.out.println(PsicologoFacede.Listar());
         }
