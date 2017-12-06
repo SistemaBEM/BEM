@@ -6,7 +6,9 @@
 package dao;
 
 import entidades.Administrador;
+import static entidades.Cryptography.Cryptography;
 import entidades.Psicologo;
+import entidades.Usuario;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -37,9 +39,15 @@ public class Main {
             p.setStatusValidacao(false);
             PsicologoDAO.Validar(p); */
            
-          UsuarioDAO.usuarioID("loginsenha");
+        //  UsuarioDAO.usuarioID("loginsenha");
            
-           ApplyProfissionalDAO.Listar("loginsenha");
+        //   ApplyProfissionalDAO.Listar("loginsenha");
+           
+           System.out.println(Cryptography("123456"));
+           
+           Usuario u = new Usuario();
+           u.getSenha();
+           System.out.println(u.getSenha());
            
     }
     

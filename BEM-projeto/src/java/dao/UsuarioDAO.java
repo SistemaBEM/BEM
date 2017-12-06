@@ -33,7 +33,7 @@ public class UsuarioDAO {
             ps.setString(1, u.getNome_completo());
             ps.setString(2, u.getEmail());
             ps.setString(3, u.getUsuario());
-            ps.setString(4, Cryptography(u.getSenha()));
+            ps.setString(4, u.getSenha());
             ps.execute(); 
             r = true;
         } catch (SQLException e) {
@@ -53,8 +53,7 @@ public class UsuarioDAO {
             {
                 ps = connection.prepareStatement("select * from cad_usuario where login = ? and senha = ?;");
                 ps.setString(1, u.getUsuario());
-                ps.setString(2, Cryptography(u.getSenha()));
-                System.out.println("senha" +  Cryptography(u.getSenha()));
+                ps.setString(2, u.getSenha());
                 rs = ps.executeQuery();
                 
                 while (rs.next()) {
@@ -77,7 +76,8 @@ public class UsuarioDAO {
         try
         {   
             ps = connection.prepareStatement(
-            "update cad_usuario set senha = '" + Cryptography(ms.getSenha()) + "' where crp = '" + ms.getValidador() + "' ;" );
+            "update cad_usuario set senha = '" + ms.getSenha() + "' where crp = '" + ms.getValidador() + "' ;" );
+            System.out.println("dao.UsuarioDAO.mudarSenha() == " + ms.getSenha());
             ps.execute();
             r = true; 
         } catch (SQLException e) {

@@ -6,6 +6,7 @@
 package controller;
 
 
+import static entidades.Cryptography.Cryptography;
 import entidades.MudarSenha;
 import fachadas.PsicologoFacede;
 import fachadas.UsuarioFacede;
@@ -86,7 +87,13 @@ public class ServletMudarSenha extends HttpServlet {
         
         String crp = request.getParameter("crp");
         String email = request.getParameter("EMail");
-        String senha = request.getParameter("conf_senha");
+        String senha = null;
+        try {
+            senha = Cryptography(request.getParameter("conf_senha"));
+            System.out.println("controller.ServletCadastroUsuario.doPost() == " + senha);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletMudarSenha.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         MudarSenha ms = new MudarSenha();
         ms.setSenha(senha);

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import static entidades.Cryptography.Cryptography;
 import entidades.Usuario;
 import fachadas.PsicologoFacede;
 import fachadas.UsuarioFacede;
@@ -85,7 +86,12 @@ public class ServletLoginUsuario extends HttpServlet {
         //processRequest(request, response);
         
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senha = null;
+        try {
+            senha = Cryptography(request.getParameter("senha"));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         Usuario u = new Usuario();
         u.setUsuario(login);

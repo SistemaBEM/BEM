@@ -105,8 +105,14 @@ public class ServletCadastroUsuario extends HttpServlet {
         String nome = request.getParameter("nome_completo");
         String email = request.getParameter("EMail");
         String login = request.getParameter("login");
-        String senha = request.getParameter("conf_senha");
+        String senha = null;
+        try {
+            senha = Cryptography(request.getParameter("conf_senha"));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
+        
         Usuario u = new Usuario();
         u.setNome_completo(nome);
         u.setEmail(email);

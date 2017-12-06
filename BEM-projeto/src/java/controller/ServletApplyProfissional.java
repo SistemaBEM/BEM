@@ -102,10 +102,6 @@ public class ServletApplyProfissional extends HttpServlet {
                     session = request.getSession();
                     session.setAttribute("login", login);
                     String message = "<center><b>Comentário cadastrado com sucesso!</b></center>";
-                    
-                           // + "<br/>Após confirmação do profissional iremos torná-lo público "
-                           // + "<br/> obs. ele não poderá ver a nota e nem o comentário atribuído. </center>";
-                    
                     request.getSession().setAttribute("message", message);
                     response.sendRedirect("loginUsuario/home.jsp");
                 } else {
