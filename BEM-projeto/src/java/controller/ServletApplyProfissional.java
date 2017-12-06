@@ -82,10 +82,13 @@ public class ServletApplyProfissional extends HttpServlet {
             throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
         
+        
         String comentario = request.getParameter("mensagem"); 
         int nota = Integer.parseInt(request.getParameter("select_notaProfissional"));
         int crp = Integer.parseInt(request.getParameter("select_nomeProfissional"));
-        String login = (String) request.getAttribute("login");
+        
+        HttpSession session = request.getSession();
+        String login = (String) session.getAttribute("login");       
         
         
         ApplyProfissional ap = new ApplyProfissional();
@@ -93,10 +96,13 @@ public class ServletApplyProfissional extends HttpServlet {
         ap.setCrp(crp);
         ap.setLogin(login);
         ap.setNota(nota);
-        
+
         try {
                 if (ApplyProfissionalFacede.inserirApply(ap)) {
+                    session = request.getSession();
+                    session.setAttribute("login", login);
                     String message = "<center><b>Comentário cadastrado com sucesso!</b></center>";
+                    
                            // + "<br/>Após confirmação do profissional iremos torná-lo público "
                            // + "<br/> obs. ele não poderá ver a nota e nem o comentário atribuído. </center>";
                     
@@ -108,9 +114,9 @@ public class ServletApplyProfissional extends HttpServlet {
                     response.sendRedirect("loginUsuario/home.jsp");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletApplyProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletApplyProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } 
     }
 

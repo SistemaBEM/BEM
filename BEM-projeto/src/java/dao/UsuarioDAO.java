@@ -132,8 +132,7 @@ public class UsuarioDAO {
         int  id = 0;
             try
             {
-                ps = connection.prepareStatement("select usuarioID from cad_usuario where login = ?;");
-                ps.setString(1, obj);
+                ps = connection.prepareStatement("select usuarioID from cad_usuario where login = '"+obj+"';");
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     id = rs.getInt("usuarioID");
@@ -146,5 +145,7 @@ public class UsuarioDAO {
             }
         return id;
     }   
+
+
 
 }

@@ -8,6 +8,9 @@ package controller;
 import fachadas.PsicologoFacede;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,11 +36,12 @@ public class ServletListarProfissional extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
+        
         if (!PsicologoFacede.Listar().isEmpty()) {
             request.setAttribute("listaPsicologos", PsicologoFacede.Listar());
             getServletContext().getRequestDispatcher("/validacaoPsicologo/index.jsp").forward(request, response);
             System.out.println(PsicologoFacede.Listar());
-        }
+        } 
         
     }
 
@@ -53,7 +57,11 @@ public class ServletListarProfissional extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletListarProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -67,7 +75,11 @@ public class ServletListarProfissional extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);       
+        try {       
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletListarProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

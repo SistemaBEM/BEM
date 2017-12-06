@@ -49,10 +49,10 @@
               <a class="nav-link" href="home.jsp">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../ServletListarProfissional">Validar Cadastro Psicólogo</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/ServletListarProfissional">Validar Cadastro Psicólogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="..cadastroAdministrador/index.jsp">Adicionar Administrador</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/cadastroAdministrador/index.jsp">Adicionar Administrador</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../logout.jsp">Sair</a>

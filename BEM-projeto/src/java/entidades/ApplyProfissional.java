@@ -12,7 +12,8 @@ package entidades;
 public class ApplyProfissional {
     
     private int nota, crp;
-
+    private String comentario, login, nomeProf;
+    
     public int getCrp() {
         return crp;
     }
@@ -20,7 +21,15 @@ public class ApplyProfissional {
     public void setCrp(int crp) {
         this.crp = crp;
     }
-    private String comentario, login;
+    
+
+    public String getNomeProf() {
+        return nomeProf;
+    }
+
+    public void setNomeProf(String nomeProf) {
+        this.nomeProf = nomeProf;
+    }
 
     public String getLogin() {
         return login;
@@ -51,8 +60,7 @@ public class ApplyProfissional {
 
     @Override
     public String toString() {
-        return "ApplyProfissional{" + "nota=" + nota + ", comentario=" + comentario + '}';
+        return "ApplyProfissional{" + "nota=" + nota + ", crp=" + crp + ", comentario=" + comentario + ", login=" + login + ", nomeProf=" + nomeProf + '}';
     }
-    
     
 }

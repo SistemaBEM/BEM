@@ -46,6 +46,12 @@
       </div>
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="${pageContext.request.contextPath}/ServletApplyProfissional">Avaliar Profissional</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link" href="${pageContext.request.contextPath}/ServletHistoricoAvaliacoes">Histórico de Avaliações</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="../logout.jsp">Sair</a>
             </li>
@@ -72,8 +78,8 @@
                             </div>
                             <div class="col-6 col-md-7" style="height: 100%;">
                                 <select name="select_nomeProfissional" class="form-control" data-error="Campo obrigatório" required>                    
+                                    <option value="0">Selecione...</option>
                                     <c:forEach var="p" items="${listaPsicologos}" varStatus="ordem">
-                                        <option value="0">Selecione...</option>
                                         <option value="${p.crp}">${p.nome}</option>
                                     </c:forEach>
                                 </select>

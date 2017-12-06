@@ -95,29 +95,20 @@ public class ServletLoginUsuario extends HttpServlet {
                 if (UsuarioFacede.verificacaoLogin(u)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
-                    request.setAttribute("login",login);
-
-                    
-                    if (!PsicologoFacede.Listar().isEmpty()) {
-                        request.setAttribute("listaPsicologos", PsicologoFacede.Listar());
-                        System.out.println( PsicologoFacede.Listar());
-                        getServletContext().getRequestDispatcher("/loginUsuario/home.jsp").forward(request, response);
-                        System.out.println(PsicologoFacede.Listar());
-                    }
-
+                    response.sendRedirect("ServletEncaminhamentoApply");
+                   
                     //response.sendRedirect("ServletDirecionamentoApply");
                 } else {
                     String message = "<center><b>Verifique seu Login e/ou Senha</b></center>";
                     request.getSession().setAttribute("message", message);
                     response.sendRedirect("loginUsuario/index.jsp");
                 }
+                
             } catch (SQLException ex) {   
                 Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-            Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
     }
 
     /**

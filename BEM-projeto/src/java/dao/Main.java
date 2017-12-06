@@ -37,9 +37,10 @@ public class Main {
             p.setStatusValidacao(false);
             PsicologoDAO.Validar(p); */
            
-           UsuarioDAO.usuarioID("loginsenha");
+          UsuarioDAO.usuarioID("loginsenha");
            
-           System.out.println( UsuarioDAO.usuarioID("loginsenha"));
+           ApplyProfissionalDAO.Listar("loginsenha");
+           
     }
     
 }
