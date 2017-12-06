@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import static services.ConectarBanco.closeConn;
 import static services.ConectarBanco.getConnection;
@@ -55,9 +56,11 @@ public class UsuarioDAO {
                 ps.setString(2, Cryptography(u.getSenha()));
                 rs = ps.executeQuery();
                 
-                if (rs.next()) {
+                if (ps != null) {
                     r = true; 
                     System.out.println("ENCONTRADO");
+                } else {
+                    System.out.println("NÃO ENCONTRADO");
                 }
                 
             } catch (SQLException e) {
@@ -122,4 +125,26 @@ public class UsuarioDAO {
         return r;
     }
     
+     public static int usuarioID(String obj) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int  id = 0;
+            try
+            {
+                ps = connection.prepareStatement("select usuarioID from cad_usuario where login = ?;");
+                ps.setString(1, obj);
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    id = rs.getInt("usuarioID");
+                    System.out.println(id);
+                }
+            } catch (SQLException e) {
+                System.out.println("error: " + e);
+            } finally {
+                closeConn(connection, rs, ps, null);
+            }
+        return id;
+    }   
+
 }

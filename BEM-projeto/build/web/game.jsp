@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand bem-logo" href="index.jsp">bem</a>
+        <a class="navbar-brand bem_logo" href="index.jsp">bem</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -64,7 +64,7 @@
                     </figure>
                 </a>
                 <figure class="fig-pic"></figure>
-                <a class="menuLogin" href="#">
+                <a class="menuLogin" href="bem-game/index.html">
                     <figure class="fig-pic">
                         <img src="imgs/imgsOption/game.png" title="game" alt="" class="img-rounded">
                         <figcaption>Jogo Interativo</figcaption>

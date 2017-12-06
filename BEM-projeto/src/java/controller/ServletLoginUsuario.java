@@ -6,12 +6,14 @@
 package controller;
 
 import entidades.Usuario;
+import fachadas.PsicologoFacede;
 import fachadas.UsuarioFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -93,7 +95,17 @@ public class ServletLoginUsuario extends HttpServlet {
                 if (UsuarioFacede.verificacaoLogin(u)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
-                    response.sendRedirect("loginUsuario/home.jsp");
+                    request.setAttribute("login",login);
+
+                    
+                    if (!PsicologoFacede.Listar().isEmpty()) {
+                        request.setAttribute("listaPsicologos", PsicologoFacede.Listar());
+                        System.out.println( PsicologoFacede.Listar());
+                        getServletContext().getRequestDispatcher("/loginUsuario/home.jsp").forward(request, response);
+                        System.out.println(PsicologoFacede.Listar());
+                    }
+
+                    //response.sendRedirect("ServletDirecionamentoApply");
                 } else {
                     String message = "<center><b>Verifique seu Login e/ou Senha</b></center>";
                     request.getSession().setAttribute("message", message);
@@ -103,7 +115,9 @@ public class ServletLoginUsuario extends HttpServlet {
                 Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (ParseException ex) {
+            Logger.getLogger(ServletLoginUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

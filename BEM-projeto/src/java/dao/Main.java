@@ -37,11 +37,9 @@ public class Main {
             p.setStatusValidacao(false);
             PsicologoDAO.Validar(p); */
            
-           ArrayList<String> list = new ArrayList<>();
-        list.add("cat");
-        list.add("dog");
-        System.out.println(list);
+           UsuarioDAO.usuarioID("loginsenha");
            
+           System.out.println( UsuarioDAO.usuarioID("loginsenha"));
     }
     
 }

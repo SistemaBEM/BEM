@@ -64,23 +64,22 @@
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div class="carousel-item active bem-image">
-            <div class="carousel-caption d-none d-md-block">
+              <a href="about.jsp"><div class="carousel-caption d-none d-md-block">
               <h3>Conheça o Bem</h3>
-              <p>This is a description for the first slide.</p>
-            </div>
+              <p>O Sistema BEM, descreve o encaminhamento do usuário para um profissional adequado</p>
+                </div></a>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
           <div class="carousel-item slide-ansiedade">
-            <div class="carousel-caption d-none d-md-block">
+              <a href="transtornos/ansiedade.jsp"><div class="carousel-caption d-none d-md-block">
               <h3>Ansiedade</h3>
-              <p>This is a description for the second slide.</p>
-            </div>
+              <p>Ansiedade, ânsia ou nervosismo é uma característica biológica do ser humano e animais</p>
+                </div></a>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <div class="carousel-item slide-depressao">
             <div class="carousel-caption d-none d-md-block">
               <h3>Depressão, ela também atinge animais</h3>
-              <p>This is a description for the third slide.</p>
             </div>
           </div>
         </div>

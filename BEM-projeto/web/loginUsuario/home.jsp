@@ -1,10 +1,9 @@
 <%-- 
-    Document   : 404
-    Created on : 26/10/2017, 20:51:19
+    Document   : header.jsp
+    Created on : 01/12/2017, 15:55:54
     Author     : Leonardo Marques
 --%>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,24 +17,25 @@
 
     <title>Projeto BEM</title>
     <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/modern-business.css" rel="stylesheet">
-    <link href="../css/auxiliar.css" rel="stylesheet">
-    <link href="../css/selected-css.css" rel="stylesheet">
-    <link href="../css/bootstrap-select.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/modern-business.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/auxiliar.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/selected-css.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-select.css" rel="stylesheet">
     
     <!--SCRIPT-->
-    <script src="../https://code.jquery.com/jquery-3.2.1.slim.js"></script>
-    <script src="../https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/https://code.jquery.com/jquery-3.2.1.slim.js"></script>
+    <script src="${pageContext.request.contextPath}/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
   </head>
   <body>
+      
     <%
-        String user =(String)session.getAttribute("login");
+        String login =(String)session.getAttribute("login");
         //redirect user to login page if not logged in
-        if((user == null)){
+        if((login == null)){
             response.sendRedirect("index.jsp");
         }
     %>
@@ -54,21 +54,91 @@
     </nav>
         
     <!-- Page Content -->
-    <div class="container">
+    <div class="container">       
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="jumbotron">
+            <h3> Avalie seus profissionais =) E nos ajude a continuar fazendo o bem </h3>
+            <br/>
+            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+            <c:remove var="message" scope="session" />
+            <br/>
+        <form  id="contactForm" data-toggle="validator" role="form" method="post" action="/BEM-projeto/ServletApplyProfissional">
         
-      <!-- Page Heading/Breadcrumbs -->
-      <div class="jumbotron">
-        <br/><br/><br/><br/>
-          <h1 class="display-3">Página em construção</h1>
-        <br/><br/><br/>
-        <br/><br/>
-      </div>
-      <!-- /.jumbotron -->
-      
-  
+                <div class="control-group form-group has-feedback">
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                              <label>Qual Profissional? </label>
+                            </div>
+                            <div class="col-6 col-md-7" style="height: 100%;">
+                                <select name="select_nomeProfissional" class="form-control" data-error="Campo obrigatório" required>                    
+                                    <c:forEach var="p" items="${listaPsicologos}" varStatus="ordem">
+                                        <option value="0">Selecione...</option>
+                                        <option value="${p.crp}">${p.nome}</option>
+                                    </c:forEach>
+                                </select>
+                                <span class="" aria-hidden="true"></span>
+                                <div class="help-block with-errors">Campo obrigatório</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <br/>
+                <div class="control-group form-group has-feedback">
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                              <label>Nota: </label>
+                            </div>
+                            <div class="col-6 col-md-7" style="height: 100%;">
+                                <select name="select_notaProfissional" class=" form-control" data-error="Campo obrigatório" required>                    
+                                        <option value="20">Selecione...</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                </select>
+                                <span class="" aria-hidden="true"></span>
+                                <div class="help-block with-errors">Campo obrigatório</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <br/>
+                    <div class="control-group form-group has-feedback">
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                                <label class="control-label">Comentário: </label>
+                            </div>
+                        <div class="col-6 col-md-7">
+                            <textarea rows="10" cols="100" class="form-control" name="mensagem" 
+                                      maxlength="999" style="resize:none" required></textarea>
+                        </div>
+                        </div>
+                    </div>
+            
+            <br/>
+            <div class="control-group form-group">
+                <div class="row">
+                    <div class="col-6 col-md-12">
+                        <input type="submit" class="form-control btn btn-primary btn-cadPsic" 
+                               name="enviar" value="Avaliar Profissional"/>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <!-- /.jumbotron -->
     </div>
     <!-- /.container -->
-
+    
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
@@ -77,8 +147,8 @@
       <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/popper/popper.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
           var mySelect = $('#first-disabled2');
@@ -99,7 +169,7 @@
           });
         });
     </script>
-    <script src="../js/validator.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
   </body>
-
+  
 </html>

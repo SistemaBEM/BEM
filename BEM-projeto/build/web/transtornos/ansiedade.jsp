@@ -37,23 +37,23 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand bem_logo" href="index.jsp" >BEM</a>
+        <a class="navbar-brand bem_logo" href="../index.jsp" >BEM</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.jsp">Sobre Nós</a>
+              <a class="nav-link" href="../about.jsp">Sobre Nós</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact2.jsp">Contate um Profissional</a>
+              <a class="nav-link" href="../contact2.jsp">Contate um Profissional</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.jsp">Fale Conosco</a>
+              <a class="nav-link" href="../contact.jsp">Fale Conosco</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="singin.jsp">Login</a>
+              <a class="nav-link" href="../singin.jsp">Login</a>
             </li>
           </ul>
         </div>
@@ -137,9 +137,9 @@
 
           Referência: <a href="https://pt.wikipedia.org/wiki/Ansiedade">Wikipédia</a>
 
-          
+          <br><br>
           <!-- Comments Form -->
-          <div class="card mb-4">
+          <!--<div class="card mb-4">
             <h5 class="card-header">Deixe um comentário:</h5>
             <div class="card-body">
               <form>
@@ -149,19 +149,19 @@
                 <button type="submit" class="btn btn-primary btn-comentar">Enviar</button>
               </form>
             </div>
-          </div>
+          </div>-->
 
           <!-- Single Comment -->
-          <div class="media mb-4">
+          <!--<div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
               <h5 class="mt-0">Usuário X</h5>
               Teste...
             </div>
-          </div>
+          </div>-->
 
           <!-- Comment with nested comments -->
-          <div class="media mb-4">
+          <!--<div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
               <h5 class="mt-0">Usuário Y</h5>
@@ -176,12 +176,12 @@
               </div>
 
             </div>
-          </div>
+          </div>-->
 
         </div>
 
         <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
+        <!--<div class="col-md-4">-->
 
 
           <!-- Categories Widget
@@ -222,14 +222,12 @@
 
 
           <!-- Side Widget -->
-          <div class="card my-4">
+          <!--<div class="card my-4">
             <h5 class="card-header">Área para notícias</h5>
             <div class="card-body">
               ...
             </div>
-          </div>
-
-        </div>
+          </div>-->
 
       </div>
       <!-- /.row -->

@@ -63,7 +63,7 @@
             <h3 align="center" class="display-8">Olá, faça seu login no <a class="navbar-brand bem_logo" href="#">bem</a>
             E nos ajude a ajudar!</h3>
             <br/>
-            <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
+            <ol <c:if test="${message != null}"> class="breadcrumb errorOlColor" </c:if> >${message}</ol>
             <c:remove var="message" scope="session" />
             
         <form class="form-signin" id="contact-form" data-toggle="validator" role="form" method="post" action="../ServletLoginUsuario">

@@ -14,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -177,7 +178,7 @@ public class PsicologoDAO {
                 closeConn(connection, rs, ps, null);
             }
         return psic.getSexo();
-    }
+    }    
         
     // Astrogilda Caroline
     
