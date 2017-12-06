@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `applyprofissional`
+--
+
+DROP TABLE IF EXISTS `applyprofissional`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `applyprofissional` (
+  `applyProfissionalID` int(11) NOT NULL AUTO_INCREMENT,
+  `crp` int(26) NOT NULL,
+  `usuarioID` int(11) NOT NULL,
+  `avaliacao` int(3) NOT NULL,
+  `comentario` varchar(999) DEFAULT NULL,
+  PRIMARY KEY (`applyProfissionalID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `applyprofissional`
+--
+
+LOCK TABLES `applyprofissional` WRITE;
+/*!40000 ALTER TABLE `applyprofissional` DISABLE KEYS */;
+INSERT INTO `applyprofissional` VALUES (1,123456,0,9,'ddddddddddddddddd');
+/*!40000 ALTER TABLE `applyprofissional` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cad_administrador`
 --
 
@@ -248,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-04 12:22:13
+-- Dump completed on 2017-12-06  6:53:45
