@@ -5,6 +5,7 @@
  */
 package controller;
 
+import static entidades.Cryptography.Cryptography;
 import entidades.Psicologo;
 import fachadas.PsicologoFacede;
 import java.io.IOException;
@@ -66,7 +67,7 @@ public class ServletLoginProfissional extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
@@ -83,7 +84,12 @@ public class ServletLoginProfissional extends HttpServlet {
         //processRequest(request, response);
         
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senha = null;
+        try {
+            senha = Cryptography(request.getParameter("senha"));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         Psicologo psic = new Psicologo();
         psic.setLogin(login);
@@ -93,10 +99,16 @@ public class ServletLoginProfissional extends HttpServlet {
         prof.setLogin(login);
         prof.setSenha(senha);
         
-
+        try {
+            System.out.println("controller.ServletLoginProfissional.doPost() == " + PsicologoFacede.Validado(psic));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletLoginProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        }
             try {
                 prof = PsicologoFacede.Login(psic); // Astrogilda Caroline
-                if (PsicologoFacede.verificacaoLogin(psic) && (prof != null)) {
+                if (PsicologoFacede.verificacaoLogin(psic) && (prof != null) && PsicologoFacede.Validado(psic)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("login", login);
                     session.setAttribute("prof", prof); // Astrogilda Caroline

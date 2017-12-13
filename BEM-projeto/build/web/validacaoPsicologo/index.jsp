@@ -50,13 +50,13 @@
               <a class="nav-link" href="loginAdministrador/home.jsp">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/BEM-projeto/ServletListarProfissional">Validar Cadastro Psicólogo</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/ListarProfissional">Validar Cadastro Psicólogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../cadastroAdministrador/adicionarAdmin.jsp">Adicionar Administrador</a>
+              <a class="nav-link" href="/BEM-projeto/cadastroAdministrador/index.jsp">Adicionar Administrador</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.jsp">Sair</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/logout.jsp">Sair</a>
             </li>
           </ul>
         </div>
@@ -67,7 +67,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="jumbotron">
         <form  id="contactForm" data-toggle="validator" role="form" method="post" action="/BEM-projeto/ServletValidarProfissional">
-        <table class="table">
+            <table class="table">
                 <thead>
                     <tr>
                         <th><center>CRP</center></th>
@@ -105,12 +105,12 @@
                 <div class="row">
                     <div class="col-6 col-md-12">
                         <input type="submit" class="form-control btn btn-primary btn-cadPsic" 
-                               name="enviar" value="Atualizar"/>
+                               name="enviar" value="Validar"/>
                     </div>
                 </div>
             </div>
             </form>
-        </div>
+        </div><br/><br/><br/>
         <!-- /.jumbotron -->
     </div>
     <!-- /.container -->

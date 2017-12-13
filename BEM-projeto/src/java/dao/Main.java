@@ -9,6 +9,7 @@ import entidades.Administrador;
 import static entidades.Cryptography.Cryptography;
 import entidades.Psicologo;
 import entidades.Usuario;
+import fachadas.PsicologoFacede;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -42,12 +43,15 @@ public class Main {
         //  UsuarioDAO.usuarioID("loginsenha");
            
         //   ApplyProfissionalDAO.Listar("loginsenha");
+        
+       // Psicologo p = new Psicologo();
+       // p.setLogin("manoel");
+        
+        ApplyProfissionalDAO.listarParaPsicologo();
+      
+        
+        
            
-           System.out.println(Cryptography("123456"));
-           
-           Usuario u = new Usuario();
-           u.getSenha();
-           System.out.println(u.getSenha());
            
     }
     

@@ -44,12 +44,18 @@
       <div class="container">
         <a class="navbar-brand bem_logo" href="../index.jsp">bem</a>
       </div>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../logout.jsp">Sair</a>
-            </li>
-          </ul>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="${pageContext.request.contextPath}/loginProfissional/home.jsp">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/ListarComentarios">Validar Comentários</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../logout.jsp">Sair</a>
+              </li>
+            </ul>
         </div>
     </nav>
         
@@ -62,12 +68,10 @@
                 <div class="col-xs-6 col-md-3">
                     <a href="#" class="thumbnail">
                         <c:if test="${sexo == 'F'}">
-                            <img style="border-radius: 175px;" src="../imgs/perfilProfissional/medica.png" alt="..."  >
-                            <!--src="http://ketchcetera.com/images/content/heads/female.jpg" alt="..."-->
+                            <img style="border-radius: 175px;" src="${pageContext.request.contextPath}/imgs/perfilProfissional/medica.png" alt="..."  >
                         </c:if>
                         <c:if test="${sexo == 'M'}">
-                            <img style="border-radius: 175px;" src="../imgs/perfilProfissional/medico.png" alt="..."  >
-                            <!--src="http://ketchcetera.com/images/content/heads/female.jpg" alt="..."-->
+                            <img style="border-radius: 175px;" src="${pageContext.request.contextPath}/imgs/perfilProfissional/medico.png" alt="..."  >
                         </c:if>
                     </a>
                 </div>
@@ -85,9 +89,10 @@
                 </div>
             </div><br>
             <div class="row">
+                
                 <div class="col-xs-6 col-md-3">
                     <form method="post" action="update.jsp">
-                        <input type="submit" class="form-control btn btn-primary btn-cadPsic" value="Alterar Imagem">
+                        <!--<input type="submit" class="form-control btn btn-primary btn-cadPsic" value="Alterar Imagem">-->
                     </form>
                 </div>
                 <div class="col-xs-6 col-md-6">

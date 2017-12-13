@@ -10,16 +10,7 @@ package entidades;
  * @author Maryanne Alice
  */
 public class TipoAtendimento {
-    private int tipoAtendimentoID;
 
-    public int getTipoAtendimentoID() {
-        return tipoAtendimentoID;
-    }
-
-    public void setTipoAtendimentoID(int tipoAtendimentoID) {
-        this.tipoAtendimentoID = tipoAtendimentoID;
-    }
-    
     private String crp;
     private boolean privado = false;
     private boolean amil = false; 

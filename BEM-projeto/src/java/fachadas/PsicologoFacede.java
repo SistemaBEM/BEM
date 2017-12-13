@@ -39,8 +39,12 @@ public class PsicologoFacede {
         return PsicologoDAO.solicitacaoCadastral(psic);
     }
     
-    public static Collection<Psicologo> Listar() throws ParseException {
+    public static Collection<Psicologo> Listar() {
         return PsicologoDAO.Listar();
+    }
+    
+    public static Collection<Psicologo> ListarParaUsuario() {
+        return PsicologoDAO.ListarParaUsuario();
     }
     
     // Astrogilda Caroline
@@ -60,4 +64,7 @@ public class PsicologoFacede {
         return PsicologoDAO.SexoPsic(psic);
     }
     
+    public static Boolean Validado(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        return PsicologoDAO.Validado(psic);
+    }
 }

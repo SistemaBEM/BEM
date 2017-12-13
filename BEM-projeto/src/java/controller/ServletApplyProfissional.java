@@ -6,7 +6,9 @@
 package controller;
 
 import entidades.ApplyProfissional;
+import entidades.FormaConsulta;
 import fachadas.ApplyProfissionalFacede;
+import fachadas.FormaConsultaFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -90,15 +92,34 @@ public class ServletApplyProfissional extends HttpServlet {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute("login");       
         
+        FormaConsulta fc = new FormaConsulta();
+        String[] atend = request.getParameterValues("select_atendimento");
+
+        for (int i = 0; i < atend.length; i++) {
+            if (atend[i].equals("privado")){
+                fc.setPrivado(true);
+            }
+            if (atend[i].equals("amil")){
+                fc.setAmil(true);
+            }
+            if (atend[i].equals("unimed-natal")){
+                fc.setUnimedNatal(true);
+            }
+            if (atend[i].equals("hapvida")){
+                fc.setHapvida(true);
+            }
+        } 
         
         ApplyProfissional ap = new ApplyProfissional();
         ap.setComentario(comentario);
         ap.setCrp(crp);
         ap.setLogin(login);
         ap.setNota(nota);
+        
+          
 
         try {
-                if (ApplyProfissionalFacede.inserirApply(ap)) {
+                if (FormaConsultaFacede.inserirFC(fc)  && ApplyProfissionalFacede.inserirApply(ap)) {
                     session = request.getSession();
                     session.setAttribute("login", login);
                     String message = "<center><b>Comentário cadastrado com sucesso!</b></center>";

@@ -64,7 +64,7 @@
                     </figure>
                 </a>
                 <figure class="fig-pic"></figure>
-                <a class="menuLogin" href="http://localhost:50001/">
+                <a class="menuLogin" href="game/index.html">
                     <figure class="fig-pic">
                         <img src="imgs/imgsOption/game.png" title="game" alt="" class="img-rounded">
                         <figcaption>Jogo Interativo</figcaption>

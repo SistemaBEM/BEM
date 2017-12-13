@@ -5,6 +5,7 @@
  */
 package controller;
 
+import static entidades.Cryptography.Cryptography;
 import entidades.Psicologo;
 import entidades.TipoAtendimento;
 import fachadas.PsicologoFacede;
@@ -111,7 +112,12 @@ public class ServletCadastroProfissional extends HttpServlet {
         String contatoOP = request.getParameter("contatoOp");
         String email = request.getParameter("EMail");
         String login = request.getParameter("login");
-        String senha = request.getParameter("conf_senha");
+        String senha = null;
+        try {
+            senha = Cryptography(request.getParameter("conf_senha"));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServletCadastroProfissional.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String sexo = request.getParameter("select_sexo");
                 
         if (numero == ""){ numero = "s/n"; }

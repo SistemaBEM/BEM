@@ -12,7 +12,33 @@ package entidades;
 public class ApplyProfissional {
     
     private int nota, crp;
-    private String comentario, login, nomeProf;
+    private String comentario, login, email, nomeProf, nomeCli;
+    private boolean statusValidacaoApply;
+
+    public boolean isStatusValidacaoApply() {
+        return statusValidacaoApply;
+    }
+
+    public void setStatusValidacaoApply(boolean statusValidacaoApply) {
+        this.statusValidacaoApply = statusValidacaoApply;
+    }
+   
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNomeCli() {
+        return nomeCli;
+    }
+
+    public void setNomeCli(String nomeCli) {
+        this.nomeCli = nomeCli;
+    }
     
     public int getCrp() {
         return crp;
@@ -60,7 +86,9 @@ public class ApplyProfissional {
 
     @Override
     public String toString() {
-        return "ApplyProfissional{" + "nota=" + nota + ", crp=" + crp + ", comentario=" + comentario + ", login=" + login + ", nomeProf=" + nomeProf + '}';
+        return "ApplyProfissional{" + "nota=" + nota + ", crp=" + crp + ", comentario=" + comentario + ", login=" + login + ", email=" + email + ", nomeProf=" + nomeProf + ", nomeCli=" + nomeCli + ", statusValidacaoApply=" + statusValidacaoApply + '}';
     }
+
+    
     
 }

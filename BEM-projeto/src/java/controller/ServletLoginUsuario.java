@@ -7,16 +7,16 @@ package controller;
 
 import static entidades.Cryptography.Cryptography;
 import entidades.Usuario;
-import fachadas.PsicologoFacede;
 import fachadas.UsuarioFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -84,7 +84,7 @@ public class ServletLoginUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, UnsupportedEncodingException {
         //processRequest(request, response);
-        
+        HttpSession session = request.getSession();
         String login = request.getParameter("login");
         String senha = null;
         try {
@@ -99,13 +99,12 @@ public class ServletLoginUsuario extends HttpServlet {
         
             try {
                 if (UsuarioFacede.verificacaoLogin(u)) {
-                    HttpSession session = request.getSession();
                     session.setAttribute("login", login);
-                    response.sendRedirect("/BEM-projeto/ServletEncaminhamentoApply");
+                     response.sendRedirect("/BEM-projeto/nos-ajude-a-continuar-fazendo-o-BEM");
             } else {
                     String message = "<center><b>Verifique seu Login e/ou Senha</b></center>";
                     request.getSession().setAttribute("message", message);
-                    response.sendRedirect("loginUsuario/index.jsp");
+                    response.sendRedirect("/loginUsuario/index.jsp");
                 }
                 
             } catch (SQLException ex) {   

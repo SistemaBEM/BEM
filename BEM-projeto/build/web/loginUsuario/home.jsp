@@ -17,6 +17,7 @@
 
     <title>Projeto BEM</title>
     <!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/css/modern-business.css" rel="stylesheet">
@@ -25,8 +26,8 @@
     <link href="${pageContext.request.contextPath}/css/bootstrap-select.css" rel="stylesheet">
     
     <!--SCRIPT-->
-    <script src="${pageContext.request.contextPath}/https://code.jquery.com/jquery-3.2.1.slim.js"></script>
-    <script src="${pageContext.request.contextPath}/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
     <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
   </head>
@@ -47,13 +48,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="${pageContext.request.contextPath}/ServletEncaminhamentoApply">Avaliar Profissional</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/nos-ajude-a-continuar-fazendo-o-BEM">Avaliar Profissional</a>
             </li>
            <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/ServletHistoricoAvaliacoes">Histórico de Avaliações</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/historico-avaliacoes">Histórico de Avaliações</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../logout.jsp">Sair</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/logout.jsp">Sair</a>
             </li>
           </ul>
         </div>
@@ -63,7 +64,7 @@
     <div class="container">       
         <!-- Page Heading/Breadcrumbs -->
         <div class="jumbotron">
-            <h3> Avalie seus profissionais =) E nos ajude a continuar fazendo o bem </h3>
+            <h3> Avalie o profissional que já te ajudou =) E nos ajude a continuar fazendo o bem </h3>
             <br/>
             <ol <c:if test="${message != null}"> class="breadcrumb" </c:if> >${message}</ol>
             <c:remove var="message" scope="session" />
@@ -89,6 +90,57 @@
                         </div>
                     </div>
                 </div>
+            <br/>
+            
+            <div class="control-group form-group has-feedback">
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                              <label>Como você foi atentido? </label>
+                            </div>
+                            <div class="col-6 col-md-7" style="height: 100%;">
+                              <div class="dropdown-menu open" role="combobox">
+                                <ul>
+                                    <li data-original-index="0" class="">
+                                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
+                                            <span class="text">Privado</span>
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+                                    <li data-original-index="1" class="">
+                                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
+                                            <span class="text">Amil</span>
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+                                    <li data-original-index="2" class="">
+                                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
+                                            <span class="text">Unimed Natal</span>
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+                                    <li data-original-index="3" class="">
+                                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
+                                            <span class="text">Hapvida</span>
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                </div>
+                                <select name="select_atendimento" class="selectpicker form-control" multiple="" 
+                                        data-error="Campo obrigatório" required>                    
+                                    <option value="privado">Privado</option>
+                                    <option value="amil">Amil</option>
+                                    <option value="unimed-natal">Unimed Natal</option>
+                                    <option value="hapvida">Hapvida</option>
+                                </select>
+                                <span class="" aria-hidden="true"></span>
+                                <div class="help-block with-errors">Campo obrigatório</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
             <br/>
                 <div class="control-group form-group has-feedback">
                     <div class="controls">
@@ -177,5 +229,4 @@
     </script>
     <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
   </body>
-  
 </html>

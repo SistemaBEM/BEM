@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -64,7 +65,7 @@ public class ServletValidarProfissional extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
@@ -80,14 +81,15 @@ public class ServletValidarProfissional extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
-        int i = 0;
+        boolean r = false;        
         Psicologo psic = new Psicologo();
+        ArrayList<Psicologo> psics = new ArrayList();
         String[] validacao = request.getParameterValues("select_validacao");
         String[] crps = request.getParameterValues("crpValidacao");
         
         
-        for (; i < validacao.length; i++) {
-            if (validacao[i].equals("nao_validado")) { 
+        for (int i = 0; i < validacao.length; i++) {
+            if (validacao[i].equals("nao_validado")) {                 
                 psic.setCrp(crps[i]);
                 psic.setStatusValidacao(false);
                 System.out.println("não foi validado = " + crps[i]);
@@ -97,21 +99,30 @@ public class ServletValidarProfissional extends HttpServlet {
                 psic.setStatusValidacao(true);
                 System.out.println("não foi validado = " + crps[i]);
             }
-        } // funcionando 
+
+            psics.add(i, psic);
         
             try {
-                    if (PsicologoFacede.Validar(psic)) {
+                    if (PsicologoFacede.Validar(psics.get(i))) {
                         //response.sendRedirect("/BEM-projeto/ServletListarProfissional");
-                        response.sendRedirect("loginAdministrador/home.jsp");
-                  } else {
-                        response.sendRedirect("/validacaoPsicologo/index.jsp?msg=ErrorOperacao");
+                        r = true;
+                        //response.sendRedirect("/loginAdministrador/home.jsp");
+                    } else {
+                        r = false;
+                        //response.sendRedirect("/validacaoPsicologo/index.jsp?msg=ErrorOperacao");
                     }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletValidarProfissional.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ServletValidarProfissional.class.getName()).log(Level.SEVERE, null, ex);
             }     
-   
+        } // funcionando
+        
+            if (r == true) {
+                response.sendRedirect("/BEM-projeto/ListarProfissional");
+            } else {
+                response.sendRedirect("validacaoPsicologo/index.jsp?msg=ErrorOperacao");
+            }
     }
 
     /**

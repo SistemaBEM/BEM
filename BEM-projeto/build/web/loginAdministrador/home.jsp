@@ -49,7 +49,7 @@
               <a class="nav-link" href="home.jsp">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/ServletListarProfissional">Validar Cadastro Psicólogo</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/ListarProfissional">Validar Cadastro Psicólogo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/cadastroAdministrador/index.jsp">Adicionar Administrador</a>
@@ -67,14 +67,14 @@
         <div class="jumbotron">
          
             <div id="figure">
-                <a class="menuLogin" href="../ServletListarProfissional">
+                <a class="menuLogin" href="${pageContext.request.contextPath}/ListarProfissional">
                     <figure class="fig-pic">
                         <img src="../imgs/imgsOptAdm/account-validation.png" title="Account Validation" alt="" class="img-rounded">
                     </figure>
                 </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="menuLogin" href="../cadastroAdministrador/index.jsp">
+                <a class="menuLogin" href="/BEM-projeto/cadastroAdministrador/index.jsp">
                     <figure class="fig-pic">
                         <img src="../imgs/imgsOptAdm/addition-account.png"  height="301"
                              title="Addition Account Adm" alt="" class="img-rounded">

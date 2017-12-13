@@ -104,9 +104,10 @@ public class ServletEditarProfissional extends HttpServlet {
                 prof = PsicologoFacede.Update(prof);
                 if (prof != null) {
                     session.setAttribute("prof", prof);
-                    
+                    session.setAttribute("login", login);
                     String sexo = PsicologoFacede.SexoPsic(prof);
                     request.getSession().setAttribute("sexo", sexo);
+                    
                     response.sendRedirect("loginProfissional/home.jsp");
                 } else {
                     request.getRequestDispatcher("loginProfissional/erro.jsp").forward(request, response);

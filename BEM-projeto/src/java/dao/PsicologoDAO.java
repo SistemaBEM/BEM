@@ -5,8 +5,6 @@
  */
 package dao;
 
-import static entidades.ConvertToTimeStamp.ConvertToTimeStamp;
-import static entidades.Cryptography.Cryptography;
 import entidades.MudarSenha;
 import entidades.Psicologo;
 import java.io.UnsupportedEncodingException;
@@ -14,9 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -51,7 +47,7 @@ public class PsicologoDAO {
             ps.setString(8, psic.getContatoOp());
             ps.setString(9, psic.getEMail());
             ps.setString(10, psic.getLogin());
-            ps.setString(11, Cryptography(psic.getSenha()));
+            ps.setString(11, psic.getSenha());
             ps.setInt(12, tpID);
             ps.setString(13, psic.getSexo());
             ps.execute(); // filho
@@ -91,7 +87,7 @@ public class PsicologoDAO {
             {
                 ps = connection.prepareStatement("select * from cad_psicologo where login = ? and senha = ?;");
                 ps.setString(1, psic.getLogin());
-                ps.setString(2, Cryptography(psic.getSenha()));
+                ps.setString(2, psic.getSenha());
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     r = true; 
@@ -112,7 +108,7 @@ public class PsicologoDAO {
         try
         {
             ps = connection.prepareStatement(
-            "update cad_psicologo set senha = '" + Cryptography(ms.getSenha()) + "' where crp = '" + ms.getValidador() + "' ;" );
+            "update cad_psicologo set senha = '" + ms.getSenha() + "' where crp = '" + ms.getValidador() + "' ;" );
             ps.execute();
             r = true; 
         } catch (SQLException e) {
@@ -164,9 +160,9 @@ public class PsicologoDAO {
         ResultSet rs = null;
             try
             {
-                ps = connection.prepareStatement("select sexo from cad_psicologo where login = ? and senha = ?;");
+                ps = connection.prepareStatement("select sexo from cad_psicologo where login = ? and senha = ?");
                 ps.setString(1, psic.getLogin());
-                ps.setString(2, Cryptography(psic.getSenha()));
+                ps.setString(2, psic.getSenha());
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     psic = new Psicologo();
@@ -191,7 +187,7 @@ public class PsicologoDAO {
             {
                 ps = connection.prepareStatement("select * from cad_psicologo where login = ? and senha = ?;");
                 ps.setString(1, psic.getLogin());
-                ps.setString(2, Cryptography(psic.getSenha()));
+                ps.setString(2, psic.getSenha());
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     psic = new Psicologo();
@@ -247,7 +243,7 @@ public class PsicologoDAO {
         return psic;
     }
     
-    public static Collection<Psicologo> Listar() throws ParseException {
+    public static Collection<Psicologo> Listar() {
         List<Psicologo> lista = new ArrayList();
         Connection connection = getConnection();
         PreparedStatement ps = null;
@@ -262,6 +258,31 @@ public class PsicologoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setData((rs.getTimestamp("dtSolicitacao")));
                 p.setStatusValidacao(rs.getBoolean("statusValidacao"));
+                lista.add(p);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PsicologoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeConn(connection, rs, ps, null);
+        }
+        System.out.println(lista);
+        return lista;
+    }
+    
+    public static Collection<Psicologo> ListarParaUsuario() {
+        List<Psicologo> lista = new ArrayList();
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            ps = connection.prepareStatement("select crp, nome from validacao_cadastro where statusValidacao = 1;" );
+            rs = ps.executeQuery();
+            while (rs.next())
+            {
+                Psicologo p = new Psicologo();
+                p.setCrp(rs.getString("crp"));
+                p.setNome(rs.getString("nome"));
                 lista.add(p);
 
             }
@@ -298,6 +319,31 @@ public class PsicologoDAO {
             }
         return r;
     }
+
     
-    
+    public static Boolean Validado(Psicologo psic) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+            try
+            {
+                ps = connection.prepareStatement("select validacao.statusValidacao \n" +
+                "from validacao_cadastro validacao \n" +
+                "inner join cad_psicologo cadastro \n" +
+                "where validacao.crp = cadastro.crp \n" +
+                "and cadastro.login = ?;");
+                ps.setString(1, psic.getLogin());
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    psic = new Psicologo();
+                    psic.setStatusValidacao(rs.getBoolean("validacao.statusValidacao"));
+                }
+            } catch (SQLException e) {
+                System.out.println("error: " + e);
+            } finally {
+                closeConn(connection, rs, ps, null);
+            }
+        return psic.isStatusValidacao();
+    }
+
 }

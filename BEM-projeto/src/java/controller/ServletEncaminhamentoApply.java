@@ -9,8 +9,6 @@ import fachadas.PsicologoFacede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Maryanne Alice
  */
-@WebServlet(name = "ServletEncaminhamentoApply", urlPatterns = {"/ServletEncaminhamentoApply"})
+@WebServlet(name = "ServletEncaminhamentoApply", urlPatterns = {"/nos-ajude-a-continuar-fazendo-o-BEM"})
 public class ServletEncaminhamentoApply extends HttpServlet {
 
     /**
@@ -32,15 +30,31 @@ public class ServletEncaminhamentoApply extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        if (!PsicologoFacede.Listar().isEmpty()) {
-            request.setAttribute("listaPsicologos", PsicologoFacede.Listar());
-            getServletContext().getRequestDispatcher("/loginUsuario/home.jsp").forward(request, response);
-            System.out.println(PsicologoFacede.Listar());
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ServletUsuario</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ServletUsuario at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
+        /*if (!PsicologoFacede.ListarParaUsuario().isEmpty()) {
+            request.setAttribute("listaPsicologos", PsicologoFacede.ListarParaUsuario());
+            getServletContext().getRequestDispatcher("/BEM-projeto/loginUsuario/home.jsp").forward(request, response);
+            System.out.println(PsicologoFacede.ListarParaUsuario());
+        }*/
+        
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -54,11 +68,13 @@ public class ServletEncaminhamentoApply extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(ServletEncaminhamentoApply.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (!PsicologoFacede.ListarParaUsuario().isEmpty()) {
+            request.setAttribute("listaPsicologos", PsicologoFacede.ListarParaUsuario());
+            getServletContext().getRequestDispatcher("/loginUsuario/home.jsp").forward(request, response);
+            System.out.println(PsicologoFacede.ListarParaUsuario());
         }
+        
     }
 
     /**
@@ -72,11 +88,7 @@ public class ServletEncaminhamentoApply extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(ServletEncaminhamentoApply.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     /**

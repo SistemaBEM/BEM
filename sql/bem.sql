@@ -28,8 +28,12 @@ CREATE TABLE `applyprofissional` (
   `usuarioID` int(11) NOT NULL,
   `avaliacao` int(3) NOT NULL,
   `comentario` varchar(999) DEFAULT NULL,
-  PRIMARY KEY (`applyProfissionalID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `statusValidacaoApply` tinyint(1) NOT NULL DEFAULT '0',
+  `formaconsultaID` int(11) NOT NULL,
+  PRIMARY KEY (`applyProfissionalID`),
+  KEY `formaconsultaID` (`formaconsultaID`),
+  CONSTRAINT `applyprofissional_ibfk_1` FOREIGN KEY (`formaconsultaID`) REFERENCES `formaconsulta` (`formaconsultaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +42,7 @@ CREATE TABLE `applyprofissional` (
 
 LOCK TABLES `applyprofissional` WRITE;
 /*!40000 ALTER TABLE `applyprofissional` DISABLE KEYS */;
-INSERT INTO `applyprofissional` VALUES (1,123456,0,9,'ddddddddddddddddd');
+INSERT INTO `applyprofissional` VALUES (5,1272356,1,10,'Dr Manoel Ã© um excelente profissional! ',1,1);
 /*!40000 ALTER TABLE `applyprofissional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +108,7 @@ CREATE TABLE `cad_psicologo` (
 
 LOCK TABLES `cad_psicologo` WRITE;
 /*!40000 ALTER TABLE `cad_psicologo` DISABLE KEYS */;
-INSERT INTO `cad_psicologo` VALUES ('1230','Psicologo Exemplo','rua da ua','1','md','j','12938290','','m@dk.com','loginpsic','senhapsic',44,'M'),('123456','Exemplo de Psicologo','rua da ua','12','bairro do airo','cidade ade','8499448833','','email@d.c','usuario','8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92E10ADC3949BA59ABBE56E057F20F883E',43,'M'),('568978','Psicologo Ogo','Rua da ua','12','Bairro do airro','Cidade de ade','11111111111111111','','h@e.com','userpsic2','8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92E10ADC3949BA59ABBE56E057F20F883E',46,'M'),('8923892','nome do nome psic','eurher','238','cjfjfj','6767xxbc','734837489821','','m@f.c','userpsic','8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92E10ADC3949BA59ABBE56E057F20F883E',45,'F');
+INSERT INTO `cad_psicologo` VALUES ('1272356','Manoel Joaquim Matos Barbosa','Rua Hermes da Fonseca','235','Castelo Branco','Parnamirim','8432205896','','manoel_matos@gmail.com','manoel','8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92E10ADC3949BA59ABBE56E057F20F883E',48,'M'),('1278722','Maria Jassiara Oliveira Castelo','Rua Hermes da Fonseca','458','Monte Castelo','Natal','8432218420','','mariaoliveira@outlook.com','mariaoliveira','8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92E10ADC3949BA59ABBE56E057F20F883E',49,'F');
 /*!40000 ALTER TABLE `cad_psicologo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +128,7 @@ CREATE TABLE `cad_usuario` (
   PRIMARY KEY (`usuarioID`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +137,7 @@ CREATE TABLE `cad_usuario` (
 
 LOCK TABLES `cad_usuario` WRITE;
 /*!40000 ALTER TABLE `cad_usuario` DISABLE KEYS */;
-INSERT INTO `cad_usuario` VALUES (1,'exemplo de usuario','usuario@exemplo.com','usuario','senha1'),(2,'Teste de usuario ','usuario@teste.2','usuario2','senha2'),(3,'usuario do bem','bem@nem.bem','userbem','senha1'),(4,'u bem','bme@u.com','bemuse','senha3'),(6,'Nome de Cliente de Teste de Senha','teste_senha@senha.com','loginsenha','3EE7292E9DB8E325D8474DD45B53E470302E7F8C5EA60622B71B5BA757E609DC5AB2C6B5585135843784112D373CA8A0');
+INSERT INTO `cad_usuario` VALUES (1,'Maria Clara Andrade Almeida','maria_clarinha@hotmail.com','maria_clara','8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92E10ADC3949BA59ABBE56E057F20F883E');
 /*!40000 ALTER TABLE `cad_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,6 +167,33 @@ CREATE TABLE `dass21_score` (
 LOCK TABLES `dass21_score` WRITE;
 /*!40000 ALTER TABLE `dass21_score` DISABLE KEYS */;
 /*!40000 ALTER TABLE `dass21_score` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `formaconsulta`
+--
+
+DROP TABLE IF EXISTS `formaconsulta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `formaconsulta` (
+  `formaconsultaID` int(11) NOT NULL AUTO_INCREMENT,
+  `privado` tinyint(1) NOT NULL DEFAULT '0',
+  `amil` tinyint(1) NOT NULL DEFAULT '0',
+  `unimed` tinyint(1) NOT NULL DEFAULT '0',
+  `hapvida` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`formaconsultaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `formaconsulta`
+--
+
+LOCK TABLES `formaconsulta` WRITE;
+/*!40000 ALTER TABLE `formaconsulta` DISABLE KEYS */;
+INSERT INTO `formaconsulta` VALUES (1,1,0,0,0);
+/*!40000 ALTER TABLE `formaconsulta` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -224,7 +255,7 @@ CREATE TABLE `tipoatendimento` (
   `unimedNatal` tinyint(1) NOT NULL,
   `hapvida` tinyint(1) NOT NULL,
   PRIMARY KEY (`tipoAtendimentoID`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,7 +264,7 @@ CREATE TABLE `tipoatendimento` (
 
 LOCK TABLES `tipoatendimento` WRITE;
 /*!40000 ALTER TABLE `tipoatendimento` DISABLE KEYS */;
-INSERT INTO `tipoatendimento` VALUES (20,'89800',1,1,1,0),(34,'12123234',1,1,0,0),(35,'1111111',1,1,1,1),(36,'828378273',1,0,0,0),(37,'1222222',0,1,1,0),(38,'1222222',0,1,1,0),(39,'9',0,1,1,0),(40,'9',0,1,1,0),(41,'91',0,1,1,0),(42,'8888888888',1,1,1,0),(43,'123456',1,1,1,1),(44,'1230',1,1,1,1),(45,'8923892',1,1,1,0),(46,'568978',1,1,1,0);
+INSERT INTO `tipoatendimento` VALUES (20,'89800',1,1,1,0),(34,'12123234',1,1,0,0),(35,'1111111',1,1,1,1),(36,'828378273',1,0,0,0),(37,'1222222',0,1,1,0),(38,'1222222',0,1,1,0),(39,'9',0,1,1,0),(40,'9',0,1,1,0),(41,'91',0,1,1,0),(42,'8888888888',1,1,1,0),(43,'123456',1,1,1,1),(44,'1230',1,1,1,1),(45,'8923892',1,1,1,0),(46,'568978',1,1,1,0),(47,'0000000000',1,1,1,1),(48,'1272356',1,0,1,0),(49,'1278722',0,1,0,1);
 /*!40000 ALTER TABLE `tipoatendimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +284,7 @@ CREATE TABLE `validacao_cadastro` (
   PRIMARY KEY (`validacaoID`),
   UNIQUE KEY `crp` (`crp`),
   CONSTRAINT `validacao_cadastro_ibfk_1` FOREIGN KEY (`crp`) REFERENCES `cad_psicologo` (`crp`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +293,7 @@ CREATE TABLE `validacao_cadastro` (
 
 LOCK TABLES `validacao_cadastro` WRITE;
 /*!40000 ALTER TABLE `validacao_cadastro` DISABLE KEYS */;
-INSERT INTO `validacao_cadastro` VALUES (1,'123456','Exemplo de Psicologo','2017-11-13 10:47:52',0),(2,'1230','Psicologo Exemplo','2017-11-14 09:12:10',0),(3,'8923892','nome','2017-11-22 15:50:59',1),(4,'568978','Psicologo Ogo','2017-12-03 13:52:34',0);
+INSERT INTO `validacao_cadastro` VALUES (6,'1272356','Manoel Joaquim Matos Barbosa','2017-12-09 00:15:58',1),(7,'1278722','Maria Jassiara Oliveira Castelo','2017-12-09 00:18:45',1);
 /*!40000 ALTER TABLE `validacao_cadastro` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -275,4 +306,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-06  6:53:45
+-- Dump completed on 2017-12-10  9:13:00
